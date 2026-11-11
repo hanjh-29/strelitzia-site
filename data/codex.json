@@ -1,0 +1,349 @@
+{
+ "schema": 1,
+ "updated": "2026-11-12",
+ "abilities": [
+  {
+   "id": "fire_mage",
+   "name": "화염법사",
+   "en": "Fire Mage",
+   "color": "#FF7A1A",
+   "image": "img/abilities/fire_mage.png",
+   "since": "0.1.0",
+   "category": "원소 마법",
+   "roles": [
+    "원거리",
+    "광역"
+   ],
+   "weapon": null,
+   "summary": "불을 다루는 법사. 멀리서 화염구를 던지고, 바닥을 불바다로 만들어요.",
+   "description": "원거리에서 화염구로 적을 불태우고, 불 장판으로 지역을 장악하는 능력이에요. 불·용암에 면역이라 불 장판 위에서도 마음껏 싸울 수 있어요.",
+   "skills": [
+    {
+     "key": "Z",
+     "name": "화염구",
+     "type": "active",
+     "cooldown": "3초",
+     "icon": "img/skills/fireball.png",
+     "desc": "바라보는 쪽으로 화염구를 날려요. 맞으면 6 피해 + 4초 동안 불, 터지면 주변 2.5칸에 3 피해.",
+     "how": "Z로 선택 → 좌클릭"
+    },
+    {
+     "key": "X",
+     "name": "불 장판",
+     "type": "active",
+     "cooldown": "12초",
+     "icon": "img/skills/fire_field.png",
+     "desc": "바라보는 땅(최대 20칸)을 5초 동안 반지름 3.5칸 용암 바닥으로 만들어요. 안에 있는 적은 0.5초마다 2 피해 + 불.",
+     "how": "X로 선택하면 깔릴 범위가 미리 보여요 → 좌클릭"
+    },
+    {
+     "key": "P",
+     "name": "불꽃 체질",
+     "type": "passive",
+     "cooldown": null,
+     "icon": "img/skills/flame_body.png",
+     "desc": "불·용암 피해를 받지 않아요. 불 붙은 적에게 주는 피해 +30%.",
+     "how": "항상 켜져 있어요"
+    }
+   ],
+   "features": [
+    "불 장판 위에서 싸우면 면역 + 추가 피해를 같이 누릴 수 있어요",
+    "블록은 부수거나 태우지 않아요"
+   ],
+   "tips": [
+    "화염구로 불을 붙인 뒤 근접 공격하면 +30% 피해",
+    "불 장판은 좁은 길목에 깔면 효과적이에요"
+   ]
+  },
+  {
+   "id": "frost_mage",
+   "name": "빙결술사",
+   "en": "Frost Mage",
+   "color": "#6CCBFF",
+   "image": "img/abilities/frost_mage.png",
+   "since": "0.2.0",
+   "category": "원소 마법",
+   "roles": [
+    "원거리",
+    "제어"
+   ],
+   "weapon": null,
+   "summary": "얼음을 다루는 술사. 빙창을 모아 쏘고, 눈보라를 두르고 돌진해 적을 얼려요.",
+   "description": "빙창을 직접 모아 두었다가 한 발씩 또는 5연발로 쏘는 능력이에요. 맞힐 때마다 쌓이는 서리 낙인으로 적을 느리게 만들고, 5개가 쌓이면 얼음에 가둬요.",
+   "skills": [
+    {
+     "key": "Z",
+     "name": "빙창 생성",
+     "type": "charge",
+     "cooldown": "충전 1.5초 · 최대 5개",
+     "icon": "img/skills/ice_spear.png",
+     "desc": "Z+우클릭으로 빙창 1개를 만들어요. 좌클릭은 1개 발사, 5개가 모이면 우클릭으로 0.1초 간격 5연발. 맞으면 4 피해 + 1초 느려짐.",
+     "how": "Z 선택 + 우클릭 = 충전 · 좌클릭 = 발사 · 5개면 우클릭 = 5연발"
+    },
+    {
+     "key": "X",
+     "name": "설풍 돌진",
+     "type": "active",
+     "cooldown": "8초",
+     "icon": "img/skills/frost_dash.png",
+     "desc": "바라보는 방향(위·아래 포함)으로 약 8칸 돌진해요. 지나가며 부딪힌 적은 4 피해 + 2초 느려짐.",
+     "how": "X로 선택 → 좌클릭"
+    },
+    {
+     "key": "P",
+     "name": "서리 낙인",
+     "type": "passive",
+     "cooldown": null,
+     "icon": "img/skills/frost_mark.png",
+     "desc": "내 스킬에 맞을 때마다 머리 위에 표식 1개 (최대 5개). 3개: 둔화 · 4개: 강한 둔화 · 5개: 팡! 터지며 3초 동안 거대한 얼음 결정에 갇혀요. 추위 피해 면역.",
+     "how": "항상 켜져 있어요"
+    }
+   ],
+   "features": [
+    "빙창은 등 뒤에 날개처럼 떠 있고 주변 사람에게도 보여요",
+    "6초 동안 안 맞으면 표식이 사라져요"
+   ],
+   "tips": [
+    "5연발 한 번이면 표식 5개 → 바로 얼음 감옥",
+    "돌진은 낙하 피해가 없어서 높은 곳에서 내려올 때도 좋아요"
+   ]
+  },
+  {
+   "id": "battle_priest",
+   "name": "전투사제",
+   "en": "Battle Priest",
+   "color": "#FFD27A",
+   "image": "img/abilities/battle_priest.png",
+   "since": "0.3.0",
+   "category": "신성",
+   "roles": [
+    "근접",
+    "버프"
+   ],
+   "weapon": "battle_mace",
+   "summary": "신의 가호를 받는 사제 전사. 메이스를 들고 싸우며, 축복으로 버티고, 무릎 꿇고 기도해 힘을 되찾아요.",
+   "description": "강력한 자기 강화 스킬을 가졌지만 쿨타임이 저절로 줄지 않아요. 웅크려 기도해야만 쿨타임이 돌아가서, 싸움과 기도의 타이밍이 중요해요.",
+   "skills": [
+    {
+     "key": "Z",
+     "name": "주님의 은혜",
+     "type": "active",
+     "cooldown": "30초 (기도로만 회복)",
+     "icon": "img/skills/lords_grace.png",
+     "desc": "3초 동안 재생 IV + 저항 IV.",
+     "how": "Z로 선택 → 좌클릭"
+    },
+    {
+     "key": "X",
+     "name": "성전의 맹세",
+     "type": "active",
+     "cooldown": "10초 (기도로만 회복)",
+     "icon": "img/skills/crusade_oath.png",
+     "desc": "10초 동안 힘 II + 신속 II. 머리 위에 붉은 금빛 링이 떠요.",
+     "how": "X로 선택 → 좌클릭"
+    },
+    {
+     "key": "P",
+     "name": "기도",
+     "type": "passive",
+     "cooldown": null,
+     "icon": "img/skills/prayer.png",
+     "desc": "스킬 쿨타임이 저절로 줄지 않아요. 웅크리면 기도해서 1초에 1초씩 줄어요. 기도 중엔 움직이거나 공격할 수 없어요.",
+     "how": "땅 위에서 웅크리기"
+    }
+   ],
+   "features": [
+    "전용 무기 메이스를 자동으로 받아요",
+    "기도하다 쿨타임이 다 차면 금빛 반짝 + \"딩\""
+   ],
+   "tips": [
+    "싸움 전에 미리 기도해서 쿨타임을 채워 두세요",
+    "주님의 은혜는 위험할 때 쓰는 생존기예요"
+   ]
+  },
+  {
+   "id": "bard",
+   "name": "바드",
+   "en": "Bard",
+   "color": "#C08CFF",
+   "image": "img/abilities/bard.png",
+   "since": "0.4.0",
+   "category": "지원",
+   "roles": [
+    "버프",
+    "광역"
+   ],
+   "weapon": "bard_lute",
+   "summary": "마력이 깃든 노래로 싸우는 음유시인. 마력 악기를 바닥에 내리치고, 룬을 새긴 서사시로 동료를 북돋아요.",
+   "description": "류트를 들고 마력 악기를 모아 범위 공격을 하고, 룬 서사시로 같은 팀에게 버프를 주는 지원형 능력이에요. 모든 스킬은 류트를 손에 들어야 쓸 수 있어요.",
+   "skills": [
+    {
+     "key": "Z",
+     "name": "악기 분쇄",
+     "type": "active",
+     "cooldown": "5초",
+     "icon": "img/skills/instrument_shatter.png",
+     "desc": "마력 악기를 휘둘러 앞 바닥에 내리쳐요. 앞으로 5칸(끝 3줄은 가로 3칸) 안의 적에게 6 피해 + 2칸 띄우기.",
+     "how": "Z 선택 + 류트 들고 좌클릭"
+    },
+    {
+     "key": "X",
+     "name": "서사시",
+     "type": "active",
+     "cooldown": "30초",
+     "icon": "img/skills/epic.png",
+     "desc": "룬을 골라 연주하면 10초 동안 나를 따라다니는 반지름 3칸 마법진 안의 나와 같은 팀에게 버프 (우루즈 힘 II · 라이도 신속 II · 알기즈 저항 II · 우은조 재생 II). 마력 악기 3개면 쿨타임 중에도 바로 연주.",
+     "how": "X 선택 + 류트 우클릭 = 룬 바꾸기 · X 선택 + 쉬프트 = 연주"
+    },
+    {
+     "key": "P",
+     "name": "마력 악기",
+     "type": "passive",
+     "cooldown": "15초",
+     "icon": "img/skills/mana_instrument.png",
+     "desc": "류트를 든 채 쉬프트를 3초 꾹 누르면 제자리에서 연주해 마력 악기 1개 (최대 3개). 중간에 떼면 취소.",
+     "how": "류트 들고 쉬프트 3초"
+    }
+   ],
+   "features": [
+    "류트를 안 들면 스킬 칸이 자물쇠로 잠겨요",
+    "룬을 고르면 류트에 룬 색 외곽선이 생기고 다른 사람에게도 보여요"
+   ],
+   "tips": [
+    "마력 악기 3개를 모아 두면 서사시를 쿨타임 없이 한 번 더",
+    "팀원과 붙어 다니면 서사시 효율이 올라가요"
+   ]
+  },
+  {
+   "id": "vampire",
+   "name": "흡혈귀",
+   "en": "Vampire",
+   "color": "#C0182E",
+   "image": "img/abilities/vampire.png",
+   "since": "0.5.0",
+   "category": "혈마법",
+   "roles": [
+    "원거리",
+    "유지력"
+   ],
+   "weapon": null,
+   "summary": "피를 무기로 쓰는 밤의 귀족. 자기 피로 창을 빚어 던지고, 적의 피를 마셔 버텨요.",
+   "description": "체력을 써서 피의 창을 던지고, 준 피해만큼 흡혈로 체력을 되찾는 능력이에요. 피의 각성 중엔 창이 공짜가 되고 흡혈량도 늘어나요.",
+   "skills": [
+    {
+     "key": "Z",
+     "name": "피의 창",
+     "type": "active",
+     "cooldown": "1초",
+     "icon": "img/skills/blood_spear.png",
+     "desc": "체력 4를 써서 오른쪽 어깨 위에 피의 창을 만들고(0.5초) 조준점으로 날려요. 맞으면 6 피해. 체력이 모자라면 못 써요.",
+     "how": "Z로 선택 → 좌클릭"
+    },
+    {
+     "key": "X",
+     "name": "피의 각성",
+     "type": "active",
+     "cooldown": "30초",
+     "icon": "img/skills/blood_awakening.png",
+     "desc": "10초 동안 저항 I + 신속 I. 각성 중엔 피의 창이 체력을 안 쓰고, 흡혈 회복량이 4 → 7.",
+     "how": "X로 선택 → 좌클릭"
+    },
+    {
+     "key": "P",
+     "name": "흡혈",
+     "type": "passive",
+     "cooldown": null,
+     "icon": "img/skills/vampirism.png",
+     "desc": "내가 준 피해(근접·활·스킬 전부)가 10 모일 때마다 체력 4 회복 (각성 중 7).",
+     "how": "항상 켜져 있어요"
+    }
+   ],
+   "features": [
+    "전용 무기는 없어요",
+    "체력은 피해가 아니라 직접 깎여서 갑옷·저항에 막히지 않아요"
+   ],
+   "tips": [
+    "각성을 켜고 피의 창을 마구 던지세요 — 공짜 + 흡혈 증가",
+    "근접 공격도 흡혈에 쳐요"
+   ]
+  }
+ ],
+ "weapons": [
+  {
+   "id": "battle_mace",
+   "name": "메이스",
+   "en": "Flanged Mace",
+   "grade": "능력 전용",
+   "category": "근접 무기",
+   "ability": "battle_priest",
+   "image": "img/weapons/battle_mace.png",
+   "since": "0.3.0",
+   "summary": "전투사제의 플랜지 메이스. 날개 4장 머리가 달린 묵직한 둔기예요.",
+   "stats": {
+    "공격 피해": "7",
+    "공격 속도": "1.0",
+    "내구도": "부서지지 않음"
+   },
+   "unique": "전투사제가 들면 기도와 축복의 힘으로 싸워요. 스킬은 메이스를 들지 않아도 쓸 수 있어요.",
+   "obtain": "전투사제가 되면 자동으로 받아요. 죽으면 사라지고 다시 살아나면 또 받아요. 능력을 초기화하면 없어져요.",
+   "usage": "일반 근접 무기처럼 휘둘러요."
+  },
+  {
+   "id": "bard_lute",
+   "name": "류트",
+   "en": "Bard Lute",
+   "grade": "능력 전용",
+   "category": "악기",
+   "ability": "bard",
+   "image": "img/weapons/bard_lute.png",
+   "since": "0.4.0",
+   "summary": "바드의 류트. 모든 바드 스킬은 이 류트를 손에 들어야 써요.",
+   "stats": {
+    "공격 피해": "3",
+    "공격 속도": "1.6",
+    "내구도": "부서지지 않음"
+   },
+   "unique": "룬을 고르면 류트 전체에 룬 색 외곽선이 생겨요 (다른 사람에게도 보여요). 악기 분쇄·서사시·마력 악기 모두 류트가 필요해요.",
+   "obtain": "바드가 되면 자동으로 받아요. 죽으면 사라지고 다시 살아나면 또 받아요.",
+   "usage": "손에 들고 Z·X·쉬프트로 스킬을 써요. 안 들면 스킬 칸이 잠겨요."
+  },
+  {
+   "id": "blood_spear",
+   "name": "피의 창",
+   "en": "Blood Spear",
+   "grade": "스킬 소환",
+   "category": "스킬 무기",
+   "ability": "vampire",
+   "image": "img/weapons/blood_spear.png",
+   "since": "0.5.0",
+   "summary": "흡혈귀가 자기 피로 빚어내는 창. 어깨 위에서 조립된 뒤 날아가요.",
+   "stats": {
+    "피해": "6",
+    "체력 소모": "4 (각성 중 0)",
+    "쿨타임": "1초"
+   },
+   "unique": "맞힌 피해는 흡혈 패시브에도 쌓여요. 맞은 자리에서 조각이 흩어지며 사라져요.",
+   "obtain": "흡혈귀 Z 스킬로 만들어요 (아이템이 아니에요).",
+   "usage": "Z로 선택 → 좌클릭. 바라보는 생물이나 블록을 향해 날아가요."
+  },
+  {
+   "id": "mana_instrument",
+   "name": "마력 악기",
+   "en": "Mana Instrument",
+   "grade": "스킬 소환",
+   "category": "스킬 무기",
+   "ability": "bard",
+   "image": "img/skills/mana_instrument.png",
+   "since": "0.4.0",
+   "summary": "보랏빛 마력으로 된 류트. 악기 분쇄 때 바닥에 내리쳐요.",
+   "stats": {
+    "최대 개수": "3",
+    "만드는 시간": "3초 연주",
+    "쿨타임": "15초"
+   },
+   "unique": "3개를 모으면 서사시를 쿨타임 중에도 바로 연주할 수 있어요.",
+   "obtain": "바드 패시브: 류트를 든 채 쉬프트 3초.",
+   "usage": "Z 악기 분쇄에 1개씩 써요."
+  }
+ ]
+}

@@ -1,0 +1,997 @@
+{
+ "schema": 1,
+ "updated": "2026-11-12",
+ "notices": [
+  {
+   "id": "notice-site-open",
+   "kind": "notice",
+   "version": null,
+   "date": "2026-11-12",
+   "title": "Strelitzia 공식 정보 사이트를 열었어요",
+   "tags": [
+    "NOTICE"
+   ],
+   "mainTag": "NOTICE",
+   "summary": "게임을 켜지 않아도 모드 소개, 능력·무기 도감, 버전별 업데이트 기록을 볼 수 있어요.",
+   "changes": [
+    {
+     "tag": "NOTICE",
+     "text": "메인 · 모드 정보 · 공지/업데이트 · 도감 페이지 오픈"
+    },
+    {
+     "tag": "NOTICE",
+     "text": "게임 안 공지 화면은 다음 업데이트에서 같은 내용으로 연결될 예정이에요"
+    }
+   ],
+   "body": "이 사이트의 공지와 업데이트 기록은 게임 안 공지 화면과 같은 데이터를 써요. 지난 버전 기록도 지우지 않고 모두 보관해요.\n\n예전 버전(0.4.14 이전)은 날짜 기록이 없어서 날짜 없이 표시돼요.",
+   "images": [],
+   "important": true,
+   "pinned": true
+  },
+  {
+   "id": "v0.5.3",
+   "kind": "update",
+   "version": "0.5.3",
+   "date": "2026-11-12",
+   "title": "피의 창 그림 갱신",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "피의 창 그림을 블록벤치 blood_spear_v3 최신본으로 교체",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "피의 창 그림을 블록벤치 blood_spear_v3 최신본으로 교체"
+    }
+   ],
+   "body": "모양·애니메이션·피해·쿨타임은 그대로",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.5.2",
+   "kind": "update",
+   "version": "0.5.2",
+   "date": "2026-11-12",
+   "title": "피의 각성 이펙트 강화",
+   "tags": [
+    "NEW",
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "피의 각성 시작 연출 강화: 거대한 핏빛 마법진 2겹, 땅을 훑는 고리 3겹, 약 7칸 피의 기둥, 사방으로 뿜어지는 피, 몸을 감는 두 갈래 나선",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "피의 각성 시작 연출 강화: 거대한 핏빛 마법진 2겹, 땅을 훑는 고리 3겹, 약 7칸 피의 기둥, 사방으로 뿜어지는 피, 몸을 감는 두 갈래 나선"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "시작 직후 0.2초·0.4초에 여진 고리 두 번"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "각성 효과음 추가 (심장·낮은 포효·주문·박쥐 떼·충전음)"
+    },
+    {
+     "tag": "NEW",
+     "text": "각성 동안 계속 나오는 이펙트: 몸 둘레를 도는 핏빛 구슬, 1초마다 발밑 맥박 고리, 검붉은 안개, 핏방울, 다른 사람에게 보이는 붉은 눈"
+    }
+   ],
+   "body": "각성 동안 이펙트는 임시예요. 블록벤치로 만든 망토·이펙트로 바뀔 예정이에요",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.5.1",
+   "kind": "update",
+   "version": "0.5.1",
+   "date": "2026-11-11",
+   "title": "새 피의 창 모델 · 어깨 위 생성 연출",
+   "tags": [
+    "NEW",
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "피의 창 모양을 블록벤치 모델(blood_spear_v3)로 교체, 게임 안 길이 약 3칸",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "피의 창 모양을 블록벤치 모델(blood_spear_v3)로 교체, 게임 안 길이 약 3칸"
+    },
+    {
+     "tag": "NEW",
+     "text": "피의 창이 오른쪽 어깨 위에 생겨 0.5초 동안 조립된 뒤 조준점으로 날아가요"
+    },
+    {
+     "tag": "NEW",
+     "text": "날아가는 동안 빙글빙글 회전, 맞으면 그 자리에서 조각이 흩어지며 사라져요"
+    }
+   ],
+   "body": "피해 6 · 체력 소모 4 · 쿨타임 1초는 그대로",
+   "images": [
+    {
+     "src": "img/weapons/blood_spear.png",
+     "caption": ""
+    }
+   ],
+   "important": false
+  },
+  {
+   "id": "v0.5.0",
+   "kind": "update",
+   "version": "0.5.0",
+   "date": "2026-11-11",
+   "title": "새 능력 흡혈귀",
+   "tags": [
+    "NEW"
+   ],
+   "mainTag": "NEW",
+   "summary": "새 능력 흡혈귀 추가",
+   "changes": [
+    {
+     "tag": "NEW",
+     "text": "새 능력 흡혈귀 추가"
+    },
+    {
+     "tag": "NEW",
+     "text": "Z 피의 창: 체력 4를 써서 창을 날려요. 맞으면 6 피해 (쿨타임 1초)"
+    },
+    {
+     "tag": "NEW",
+     "text": "X 피의 각성: 10초 동안 저항 I + 신속 I, 창이 체력을 안 쓰고 흡혈 회복량 증가 (쿨타임 30초)"
+    },
+    {
+     "tag": "NEW",
+     "text": "P 흡혈: 내가 준 피해가 10 모일 때마다 체력 4 회복 (각성 중 7)"
+    },
+    {
+     "tag": "NEW",
+     "text": "핏빛 이펙트 · 스킬 아이콘 · 대표 그림"
+    }
+   ],
+   "body": "자기 피를 무기로 쓰는 밤의 귀족이에요. 체력을 써서 공격하고, 적의 피를 마셔 버티는 능력이에요.",
+   "images": [
+    {
+     "src": "img/abilities/vampire.png",
+     "caption": ""
+    }
+   ],
+   "important": true
+  },
+  {
+   "id": "v0.4.16",
+   "kind": "update",
+   "version": "0.4.16",
+   "date": "2026-11-11",
+   "title": "전투사제 플랜지 메이스",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "전투사제 메이스를 새 블록벤치 플랜지 메이스로 교체 (모양·그림·손에 든 자세)",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "전투사제 메이스를 새 블록벤치 플랜지 메이스로 교체 (모양·그림·손에 든 자세)"
+    }
+   ],
+   "body": "공격 피해 7 · 공격 속도 1.0 · 스킬은 그대로",
+   "images": [
+    {
+     "src": "img/weapons/battle_mace.png",
+     "caption": ""
+    }
+   ],
+   "important": false
+  },
+  {
+   "id": "v0.4.15",
+   "kind": "update",
+   "version": "0.4.15",
+   "date": "2026-11-11",
+   "title": "전투모드 체력 기억",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "전투모드 체력을 따로 기억해요: 전투 3줄 → 야생 → 다시 전투면 3줄 그대로",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "전투모드 체력을 따로 기억해요: 전투 3줄 → 야생 → 다시 전투면 3줄 그대로"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "야생에서 맞거나 회복한 건 전투 체력에 반영되지 않아요"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "나갔다 들어와도 기억, 죽으면 지워져요"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.4.14",
+   "kind": "update",
+   "version": "0.4.14",
+   "date": null,
+   "title": "바드 마력 악기 칸 잠금",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "바드 P(마력 악기) 칸도 류트를 안 들면 자물쇠 (Z·X 와 똑같이 어둡게 + 회색 자물쇠, 테두리·P 글자도 회색. C 키를 누르면 자물쇠가 흔들려요)",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "바드 P(마력 악기) 칸도 류트를 안 들면 자물쇠 (Z·X 와 똑같이 어둡게 + 회색 자물쇠, 테두리·P 글자도 회색. C 키를 누르면 자물쇠가 흔들려요)"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.4.13",
+   "kind": "update",
+   "version": "0.4.13",
+   "date": null,
+   "title": "전투모드 경험치 규칙",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "전투모드에선 경험치 구슬을 먹어도 경험치가 안 올라요 (수선은 그대로), 야생모드는 원래대로",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "전투모드에선 경험치 구슬을 먹어도 경험치가 안 올라요 (수선은 그대로), 야생모드는 원래대로"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.4.12",
+   "kind": "update",
+   "version": "0.4.12",
+   "date": null,
+   "title": "룬 색 외곽선 공유 · 류트 정리",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "바드 류트: 룬 색 외곽선이 다른 사람 화면에도 보여요 (서버가 주변 사람에게 룬·켜짐을 알려줘요, 나중에 가까이 온 사람에게도)",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "바드 류트: 룬 색 외곽선이 다른 사람 화면에도 보여요 (서버가 주변 사람에게 룬·켜짐을 알려줘요, 나중에 가까이 온 사람에게도)"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "류트 조각(아이템 조각 입자) 그림을 새 v3 류트 나뭇결로 (textures/item/bard_lute_particle.png)"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "옛 류트 파일 정리 (옛 모델·옛 그림·옛 블록벤치 원본 2개)"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.4.11",
+   "kind": "update",
+   "version": "0.4.11",
+   "date": null,
+   "title": "마력 악기 → 패시브",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "바드 마력 악기를 C 스킬에서 패시브 P 로: 전투모드에서 류트를 든 채 쉬프트(웅크리기)를 3초 꾹 누르면 마력 악기 1개 (제자리 고정은 그대로, 쿨타임 15초 그대로 — P 칸에 표시). 중간에 떼면 취소되고 ",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "바드 마력 악기를 C 스킬에서 패시브 P 로: 전투모드에서 류트를 든 채 쉬프트(웅크리기)를 3초 꾹 누르면 마력 악기 1개 (제자리 고정은 그대로, 쿨타임 15초 그대로 — P 칸에 표시). 중간에 떼면 취소되고 쿨타임도 안 돌아요 (류트를 내려놓거나 야생모드로 바꿔도 취소). X(서사시)를 고른 채 쉬프트는 그대로 서사시 연주. C 키는 쓰는 법 안내만"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.4.10",
+   "kind": "update",
+   "version": "0.4.10",
+   "date": null,
+   "title": "새 블록벤치 류트",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "바드 류트를 새 블록벤치 류트로 교체 (갈색 나뭇결, 큰 덩어리 몸통, 얇은 줄 4개) + 류트 전체 외곽선(Inverted Hull)이 고른 룬 색으로 보임 (우루즈 빨강 · 라이도 하늘 · 알기즈 노랑 · 우은조",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "바드 류트를 새 블록벤치 류트로 교체 (갈색 나뭇결, 큰 덩어리 몸통, 얇은 줄 4개) + 류트 전체 외곽선(Inverted Hull)이 고른 룬 색으로 보임 (우루즈 빨강 · 라이도 하늘 · 알기즈 노랑 · 우은조 에메랄드) — 룬을 고르면 나타나고 서사시를 쓰면 사라져요. 손에 든 크기·각도 새로 맞춤. 능력·룬 규칙은 그대로"
+    }
+   ],
+   "body": "",
+   "images": [
+    {
+     "src": "img/weapons/bard_lute.png",
+     "caption": ""
+    }
+   ],
+   "important": false
+  },
+  {
+   "id": "v0.4.9",
+   "kind": "update",
+   "version": "0.4.9",
+   "date": null,
+   "title": "서사시 마법진 따라오기 수정",
+   "tags": [
+    "FIX"
+   ],
+   "mainTag": "FIX",
+   "summary": "서사시 마법진이 바드 발밑에 딱 붙어요 (걸을 때·점프할 때 발 높이 그대로 따라가요. 예전엔 점프해도 바닥에 남았어요). 버프 범위·판정은 그대로",
+   "changes": [
+    {
+     "tag": "FIX",
+     "text": "서사시 마법진이 바드 발밑에 딱 붙어요 (걸을 때·점프할 때 발 높이 그대로 따라가요. 예전엔 점프해도 바닥에 남았어요). 버프 범위·판정은 그대로"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.4.8",
+   "kind": "update",
+   "version": "0.4.8",
+   "date": null,
+   "title": "룬별 3D 마법진",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "서사시 마법진을 룬마다 다른 블록벤치 3D 마법진으로 교체 (힘·바람·수호·치유, 회전 + 색 입자 + 사라질 때 흩어지기)",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "서사시 마법진을 룬마다 다른 블록벤치 3D 마법진으로 교체 (힘·바람·수호·치유, 회전 + 색 입자 + 사라질 때 흩어지기)"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "룬 색을 마법진 색에 맞춤 (라이도 하늘 · 알기즈 노랑 · 우은조 연두). 옛 마법진 그림·가운데 룬 문양·음파 고리 없앰, 음표는 그대로"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.4.7",
+   "kind": "update",
+   "version": "0.4.7",
+   "date": null,
+   "title": "서사시 범위 조정",
+   "tags": [
+    "BALANCE"
+   ],
+   "mainTag": "BALANCE",
+   "summary": "서사시 마법진 반지름 8칸 → 3칸 (버프 범위도 3칸, 마법진 그림은 같은 디자인 그대로 크기만)",
+   "changes": [
+    {
+     "tag": "BALANCE",
+     "text": "서사시 마법진 반지름 8칸 → 3칸 (버프 범위도 3칸, 마법진 그림은 같은 디자인 그대로 크기만)"
+    },
+    {
+     "tag": "BALANCE",
+     "text": "바드 스킬을 고를 때 손 앞에 나오던 불꽃 이펙트 없앰 (불꽃은 화염법사만)"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.4.6",
+   "kind": "update",
+   "version": "0.4.6",
+   "date": null,
+   "title": "악기 분쇄 · 서사시 마법진 새 디자인",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "바드 악기 분쇄: 마력 악기를 2배 크기로, 방향을 반대로 (줄 있는 목이 나를 향하고 몸통이 먼 쪽에 떨어져요, 목 끝을 축으로 망치처럼 휘두르기)",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "바드 악기 분쇄: 마력 악기를 2배 크기로, 방향을 반대로 (줄 있는 목이 나를 향하고 몸통이 먼 쪽에 떨어져요, 목 끝을 축으로 망치처럼 휘두르기)"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "서사시 마법진 새 디자인 (룬 문자 띠 · 오선과 음표 · 8각 별 · 메달 원 8개 · 8잎 꽃 · 박자 눈금, 두 장이 반대로 회전 + 음파 고리 + 떠오르는 음표). 기능·피해·버프·쿨타임은 그대로"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.4.5",
+   "kind": "update",
+   "version": "0.4.5",
+   "date": null,
+   "title": "잠금·체력 표시 다듬기 · 밴 규칙",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "잠금 자물쇠를 회색 단색으로 (크기·자리 그대로)",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "잠금 자물쇠를 회색 단색으로 (크기·자리 그대로)"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "체력 x4 를 하트 높이 네모 상자 + 도트 글자로 (가운데 정렬)"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "능력을 밴하면 그 능력을 가진 사람은 초기화 (나가 있던 사람은 들어올 때), /ability set 도 밴된 능력은 못 줘요"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.4.4",
+   "kind": "update",
+   "version": "0.4.4",
+   "date": null,
+   "title": "능력 밴 · 전투모드 체력 80",
+   "tags": [
+    "NEW"
+   ],
+   "mainTag": "NEW",
+   "summary": "바드 류트 잠금: 류트를 안 들면 Z·X 칸에 자물쇠 (고를 수 없음, 류트를 들면 바로 풀림. C 는 그대로)",
+   "changes": [
+    {
+     "tag": "NEW",
+     "text": "바드 류트 잠금: 류트를 안 들면 Z·X 칸에 자물쇠 (고를 수 없음, 류트를 들면 바로 풀림. C 는 그대로)"
+    },
+    {
+     "tag": "NEW",
+     "text": "능력 밴: 관리자가 능력 선택 화면에서 카드 우클릭·설명 창 버튼으로 밴"
+    },
+    {
+     "tag": "NEW",
+     "text": "밴 풀기 (밴된 능력은 직접 고르기·랜덤에서 빠짐, 월드에 저장)"
+    },
+    {
+     "tag": "NEW",
+     "text": "전투모드 체력: 최대 체력 80, 하트 한 줄 + x4 (줄마다 초록 → 노랑 → 주황 → 빨강), 모드를 바꿔도 체력이 이어지게"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": true
+  },
+  {
+   "id": "v0.4.3",
+   "kind": "update",
+   "version": "0.4.3",
+   "date": null,
+   "title": "바드 연출·조작 개편",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "바드: 악기 분쇄를 좌클릭으로, 마력 악기를 휘둘러 바닥에 납작하게(뒷면이 딱 붙게) 내리치는 모습으로, 범위를 앞 5칸 + 끝 3줄 가로 3칸으로 (테두리 = 판정)",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "바드: 악기 분쇄를 좌클릭으로, 마력 악기를 휘둘러 바닥에 납작하게(뒷면이 딱 붙게) 내리치는 모습으로, 범위를 앞 5칸 + 끝 3줄 가로 3칸으로 (테두리 = 판정)"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "서사시를 따라다니는 반지름 8칸 마법진(10초, 안에 있을 때만 버프)으로, 룬 빛 차분하게, 화면 룬 문양 살짝 아래로, X 칸 룬 표시 없앰"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "마력 악기 표식을 테두리 없는 희미한 악기 그림 3개(부채꼴)로"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.4.2",
+   "kind": "update",
+   "version": "0.4.2",
+   "date": null,
+   "title": "바드 룬 서사시 · 악기 연출",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "바드: 악기 분쇄를 마력 악기가 바로 앞 땅에 내리꽂히는 모습으로 (박히는 순간 범위 전체 피해, 흙 조각·빛나는 금·범위 테두리)",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "바드: 악기 분쇄를 마력 악기가 바로 앞 땅에 내리꽂히는 모습으로 (박히는 순간 범위 전체 피해, 흙 조각·빛나는 금·범위 테두리)"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "서사시 노래 → 룬 사전의 룬 4개(우루즈·라이도·알기즈·우은조), 룬을 바꾸면 화면 가운데에 룬 문양, X 칸 구석에 지금 룬, 발동하면 반지름 8칸 원"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "마력 악기 개수를 스킬 칸 바로 위 류트 아이콘 3칸으로 (생길 때·쓸 때 애니메이션). Z·C 스킬 그림도 보랏빛 마력 악기로"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.4.1",
+   "kind": "update",
+   "version": "0.4.1",
+   "date": null,
+   "title": "류트 손 자세 조정",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "류트 손에 든 모습(3인칭·1인칭)·인벤토리 모습을 Blockbench 에서 직접 맞춘 값으로",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "류트 손에 든 모습(3인칭·1인칭)·인벤토리 모습을 Blockbench 에서 직접 맞춘 값으로"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.4.0",
+   "kind": "update",
+   "version": "0.4.0",
+   "date": null,
+   "title": "새 능력 바드",
+   "tags": [
+    "NEW"
+   ],
+   "mainTag": "NEW",
+   "summary": "새 능력 바드 (악기 분쇄·서사시·마력 악기) + Blockbench 3D 류트 (자동 지급), 마력 악기 스택(최대 3, 내 HUD 에만), 음표 입자. 능력 전용 무기 지급을 공통으로 (AbilityWeapons",
+   "changes": [
+    {
+     "tag": "NEW",
+     "text": "새 능력 바드 (악기 분쇄·서사시·마력 악기) + Blockbench 3D 류트 (자동 지급), 마력 악기 스택(최대 3, 내 HUD 에만), 음표 입자. 능력 전용 무기 지급을 공통으로 (AbilityWeapons)"
+    }
+   ],
+   "body": "",
+   "images": [
+    {
+     "src": "img/abilities/bard.png",
+     "caption": ""
+    }
+   ],
+   "important": true
+  },
+  {
+   "id": "v0.3.2",
+   "kind": "update",
+   "version": "0.3.2",
+   "date": null,
+   "title": "성전의 맹세 붉은 금빛 링",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "성전의 맹세 효과가 남은 동안 머리 위에 붉은 금빛 링 (주변 사람에게도 보여요)",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "성전의 맹세 효과가 남은 동안 머리 위에 붉은 금빛 링 (주변 사람에게도 보여요)"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.3.1",
+   "kind": "update",
+   "version": "0.3.1",
+   "date": null,
+   "title": "전투사제 밸런스 조정",
+   "tags": [
+    "BALANCE"
+   ],
+   "mainTag": "BALANCE",
+   "summary": "주님의 은혜 재생 II → IV, 성전의 맹세 쿨타임 20초 → 10초, 메이스 손에 든 모습(3인칭·1인칭)을 Blockbench 에서 직접 맞춘 값으로",
+   "changes": [
+    {
+     "tag": "BALANCE",
+     "text": "주님의 은혜 재생 II → IV, 성전의 맹세 쿨타임 20초 → 10초, 메이스 손에 든 모습(3인칭·1인칭)을 Blockbench 에서 직접 맞춘 값으로"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.3.0",
+   "kind": "update",
+   "version": "0.3.0",
+   "date": null,
+   "title": "새 능력 전투사제",
+   "tags": [
+    "NEW"
+   ],
+   "mainTag": "NEW",
+   "summary": "새 능력 전투사제 (주님의 은혜·성전의 맹세·기도) + Blockbench 3D 메이스 (자동 지급), 금빛 마법진·십자 별빛 입자, 기도 후광",
+   "changes": [
+    {
+     "tag": "NEW",
+     "text": "새 능력 전투사제 (주님의 은혜·성전의 맹세·기도) + Blockbench 3D 메이스 (자동 지급), 금빛 마법진·십자 별빛 입자, 기도 후광"
+    }
+   ],
+   "body": "",
+   "images": [
+    {
+     "src": "img/abilities/battle_priest.png",
+     "caption": ""
+    }
+   ],
+   "important": true
+  },
+  {
+   "id": "v0.2.14",
+   "kind": "update",
+   "version": "0.2.14",
+   "date": null,
+   "title": "전투모드 / 야생모드 (R키)",
+   "tags": [
+    "NEW"
+   ],
+   "mainTag": "NEW",
+   "summary": "R키 전투모드",
+   "changes": [
+    {
+     "tag": "NEW",
+     "text": "R키 전투모드"
+    },
+    {
+     "tag": "NEW",
+     "text": "야생모드 (접속하면 야생모드, 야생모드엔 스킬 조작 꺼짐·빙창 숨김·HUD 어둡게, 서버도 확인)"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": true
+  },
+  {
+   "id": "v0.2.13",
+   "kind": "update",
+   "version": "0.2.13",
+   "date": null,
+   "title": "빙창 5연발 바로 쓰기",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "빙창 5개가 꽉 차면 Z 를 안 골라도 우클릭으로 촤자장 5연발 (칸 위에 \"빙창 5연발 · 우클릭\" 안내), 연발이 날아가는 동안엔 새로 만들기 막기",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "빙창 5개가 꽉 차면 Z 를 안 골라도 우클릭으로 촤자장 5연발 (칸 위에 \"빙창 5연발 · 우클릭\" 안내), 연발이 날아가는 동안엔 새로 만들기 막기"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.2.12",
+   "kind": "update",
+   "version": "0.2.12",
+   "date": null,
+   "title": "빙창 깜박임 수정",
+   "tags": [
+    "FIX"
+   ],
+   "mainTag": "FIX",
+   "summary": "빙창 깜박임 고침: 손 앞 빙창은 돌지 않고 다 같이 천천히 움직이게, 등 뒤 빙창은 천천히만 돌게, 빛 껍질이 흐르거나 맥박치지 않는 차분한 모델로, 모서리 빛이 툭툭 켜지지 않고 서서히 바뀌게, 손 앞 눈꽃 입자",
+   "changes": [
+    {
+     "tag": "FIX",
+     "text": "빙창 깜박임 고침: 손 앞 빙창은 돌지 않고 다 같이 천천히 움직이게, 등 뒤 빙창은 천천히만 돌게, 빛 껍질이 흐르거나 맥박치지 않는 차분한 모델로, 모서리 빛이 툭툭 켜지지 않고 서서히 바뀌게, 손 앞 눈꽃 입자 줄이기"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.2.11",
+   "kind": "update",
+   "version": "0.2.11",
+   "date": null,
+   "title": "손 앞 빙창 사라짐 수정",
+   "tags": [
+    "FIX"
+   ],
+   "mainTag": "FIX",
+   "summary": "Z 를 풀면 손 앞 빙창이 사라지던 것 고침 (0.2.8 의 고친 파일이 PC 에 안 들어가 있었음) + 빙창을 개수와 따로 관리하는 객체로 (Z·X 와 상관없이 그대로 유지, 새 빙창만 커지며 등장)",
+   "changes": [
+    {
+     "tag": "FIX",
+     "text": "Z 를 풀면 손 앞 빙창이 사라지던 것 고침 (0.2.8 의 고친 파일이 PC 에 안 들어가 있었음) + 빙창을 개수와 따로 관리하는 객체로 (Z·X 와 상관없이 그대로 유지, 새 빙창만 커지며 등장)"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.2.10",
+   "kind": "update",
+   "version": "0.2.10",
+   "date": null,
+   "title": "안 쓰는 파일 정리",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "정리: 안 쓰는 그림 10개(예전 마법진·불덩이·불씨 고리·얼음 감옥 입자·둥근 표식 도트)와 안 쓰는 코드·옛 설명 지우기",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "정리: 안 쓰는 그림 10개(예전 마법진·불덩이·불씨 고리·얼음 감옥 입자·둥근 표식 도트)와 안 쓰는 코드·옛 설명 지우기"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.2.9",
+   "kind": "update",
+   "version": "0.2.9",
+   "date": null,
+   "title": "연속 빙창 피해 씹힘 수정",
+   "tags": [
+    "FIX"
+   ],
+   "mainTag": "FIX",
+   "summary": "빙창 연속 발사 때 몇 개 피해가 씹히던 것 고침 (마크 무적 시간 → 빙창·돌진은 맞을 때 무적 시간을 풀고 피해)",
+   "changes": [
+    {
+     "tag": "FIX",
+     "text": "빙창 연속 발사 때 몇 개 피해가 씹히던 것 고침 (마크 무적 시간 → 빙창·돌진은 맞을 때 무적 시간을 풀고 피해)"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.2.8",
+   "kind": "update",
+   "version": "0.2.8",
+   "date": null,
+   "title": "빙창 1인칭 표시 개선",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "빙창이 Z 선택과 상관없이 1인칭 손에 항상 보이게, 돌진 등 빨리 움직이면 빙창이 뒤로 끌려오며 따라오게",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "빙창이 Z 선택과 상관없이 1인칭 손에 항상 보이게, 돌진 등 빨리 움직이면 빙창이 뒤로 끌려오며 따라오게"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.2.7",
+   "kind": "update",
+   "version": "0.2.7",
+   "date": null,
+   "title": "서리 낙인 단계 조정",
+   "tags": [
+    "BALANCE"
+   ],
+   "mainTag": "BALANCE",
+   "summary": "5개 빙결 = 거대한 얼음 결정 덩어리에 갇힘, 3·4개는 둔화만 (느림 II → 느림 IV)",
+   "changes": [
+    {
+     "tag": "BALANCE",
+     "text": "5개 빙결 = 거대한 얼음 결정 덩어리에 갇힘, 3·4개는 둔화만 (느림 II → 느림 IV)"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.2.6",
+   "kind": "update",
+   "version": "0.2.6",
+   "date": null,
+   "title": "서리 낙인 5개 폭발 연출",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "표식 5개가 모이면 팡! 터지며 얼음에 갇힘, 표식 바로 초기화",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "표식 5개가 모이면 팡! 터지며 얼음에 갇힘, 표식 바로 초기화"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.2.5",
+   "kind": "update",
+   "version": "0.2.5",
+   "date": null,
+   "title": "얼음 파편 표식 도트",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "머리 위 표식을 길고 뾰족한 얼음 파편 도트로",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "머리 위 표식을 길고 뾰족한 얼음 파편 도트로"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.2.4",
+   "kind": "update",
+   "version": "0.2.4",
+   "date": null,
+   "title": "얼어붙은 몸 연출",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "얼어붙은 몸이 파랗게 서리 덮이는 모습 (모든 생물 모양에 맞춤)",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "얼어붙은 몸이 파랗게 서리 덮이는 모습 (모든 생물 모양에 맞춤)"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.2.3",
+   "kind": "update",
+   "version": "0.2.2 ~ 0.2.3",
+   "date": null,
+   "title": "빙창 충전·발사 시스템",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "빙창 최대 5개·Z+우클릭 충전(1.5초)·좌클릭 발사·5연발, 빙창 모델 깎은 얼음처럼, 서리 낙인 단계 효과, 설풍 돌진 위·아래 방향",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "빙창 최대 5개·Z+우클릭 충전(1.5초)·좌클릭 발사·5연발, 빙창 모델 깎은 얼음처럼, 서리 낙인 단계 효과, 설풍 돌진 위·아래 방향"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.2.1",
+   "kind": "update",
+   "version": "0.2.0 ~ 0.2.1",
+   "date": null,
+   "title": "새 능력 빙결술사",
+   "tags": [
+    "NEW"
+   ],
+   "mainTag": "NEW",
+   "summary": "새 능력 빙결술사 (빙창 생성·설풍 돌진·서리 낙인) + 직접 모으는 스킬 시스템(HUD 마름모)",
+   "changes": [
+    {
+     "tag": "NEW",
+     "text": "새 능력 빙결술사 (빙창 생성·설풍 돌진·서리 낙인) + 직접 모으는 스킬 시스템(HUD 마름모)"
+    }
+   ],
+   "body": "",
+   "images": [
+    {
+     "src": "img/abilities/frost_mage.png",
+     "caption": ""
+    }
+   ],
+   "important": true
+  },
+  {
+   "id": "v0.1.14",
+   "kind": "update",
+   "version": "0.1.5 ~ 0.1.14",
+   "date": null,
+   "title": "화염법사 3D 연출 · G키 화면 새 디자인",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "화염구 울퉁불퉁 3D 모델·손에 든 화염구, 불 장판 용암 바닥(반투명), G키 화면 새 디자인(시안 A·카드 격자·갈무리 글꼴), 누구나 능력 초기화, 글자 위치 맞춤",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "화염구 울퉁불퉁 3D 모델·손에 든 화염구, 불 장판 용암 바닥(반투명), G키 화면 새 디자인(시안 A·카드 격자·갈무리 글꼴), 누구나 능력 초기화, 글자 위치 맞춤"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.1.4",
+   "kind": "update",
+   "version": "0.1.0 ~ 0.1.4",
+   "date": null,
+   "title": "첫 버전 · 화염법사",
+   "tags": [
+    "NEW"
+   ],
+   "mainTag": "NEW",
+   "summary": "첫 버전: 능력 선택(직접/랜덤+다시 뽑기 3번), 스킬 HUD, 관리자 명령어, 화염법사, 직접 만든 빛나는 이펙트, 설치 스킬 범위 미리 보기",
+   "changes": [
+    {
+     "tag": "NEW",
+     "text": "첫 버전: 능력 선택(직접/랜덤+다시 뽑기 3번), 스킬 HUD, 관리자 명령어, 화염법사, 직접 만든 빛나는 이펙트, 설치 스킬 범위 미리 보기"
+    }
+   ],
+   "body": "",
+   "images": [
+    {
+     "src": "img/abilities/fire_mage.png",
+     "caption": ""
+    }
+   ],
+   "important": true
+  }
+ ]
+}
