@@ -992,6 +992,53 @@
     }
    ],
    "important": true
+  },
+  {
+   "id": "v0.5.4",
+   "kind": "update",
+   "version": "0.5.4",
+   "date": "2026-11-12",
+   "title": "빌드 오류 수정",
+   "tags": [
+    "FIX",
+    "NEW"
+   ],
+   "mainTag": "FIX",
+   "summary": "0.5.2 이후 모드가 빌드되지 않던 문제를 고쳤어요",
+   "changes": [
+    {
+     "tag": "FIX",
+     "text": "피의 각성이 끝날 때 쓰는 이펙트 코드가 빠져서 모드가 빌드되지 않던 문제 수정"
+    },
+    {
+     "tag": "NEW",
+     "text": "피의 각성이 끝날 때: 발밑에 희미한 고리가 퍼지고 피 안개가 흩어지며 핏방울이 떨어져요"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.5.5",
+   "kind": "update",
+   "version": "0.5.5",
+   "date": "2026-11-12",
+   "title": "흡혈귀 손 불꽃 삭제",
+   "tags": [
+    "FIX"
+   ],
+   "mainTag": "FIX",
+   "summary": "피의 창·피의 각성을 고르면 손 앞에 불꽃이 나오던 것을 없앴어요",
+   "changes": [
+    {
+     "tag": "FIX",
+     "text": "흡혈귀가 피의 창·피의 각성을 고른 동안 손 앞에 화염법사 불꽃이 나오던 문제 수정 (손 앞 불꽃은 화염법사만)"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
   }
  ]
 }

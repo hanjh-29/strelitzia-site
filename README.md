@@ -95,3 +95,8 @@ https://hanjh-29.github.io/strelitzia-site/data/codex.json
 
 PC 의 `Strelitzia\build\libs\strelitzia-버전.jar` 를 가져와서 `downloads/` 에 넣고,
 `data/downloads.json` 에 항목(version·date·file·name·size·sha256·notice·note·tested)을 추가한 뒤 main 에 커밋·푸시해요.
+
+## 모드를 고치면 공지도 같이 (사용자 요청 2026-11-12)
+
+모드를 고쳐서 버전을 올릴 때마다 이 사이트 `data/notices.json` 에도 그 버전의 업데이트 글을 같이 올려요.
+(id `v버전`, kind `update`, 바뀐 점은 모드 README 버전 기록과 같게. 새 기능 NEW · 개선 UPDATE · 오류 FIX · 밸런스 BALANCE)
