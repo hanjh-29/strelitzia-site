@@ -5,7 +5,7 @@
   const { TAGS, TAG_ORDER, pixelIcon, esc, richText, sortNotices, isFresh, formatDate, loadJson } = window.SZ;
   const app = document.getElementById('app');
   const state = { site: null, notices: [], codex: null, downloads: { requirements: {}, files: [] } };
-  const GOLD = '#A6E04A'; // 강조색 (연두)
+  const GOLD = '#3A9D47'; // 강조색 (진한 초록)
 
   // ------------------------------------------------------------------ 읽음 표시
   // 공지를 열면 "읽음"으로 이 브라우저에 기억해요 → N 표시와 숫자가 사라져요.
@@ -121,7 +121,7 @@
       '<div class="ko">' + esc(s.nameKo) + ' · 능력자 모드</div>' +
       '<p class="lead">' + esc(s.tagline) + '</p><p class="sub">' + esc(s.intro) + '</p>' +
       (latestFile()
-        ? '<div class="menu"><a class="btn" href="#/download">' + pixelIcon('down', '#1C330A', 12) + '모드 받기 v' + esc(latestFile().version) + '</a>' +
+        ? '<div class="menu"><a class="btn" href="#/download">' + pixelIcon('down', '#FFFFFF', 12) + '모드 받기 v' + esc(latestFile().version) + '</a>' +
           '<div class="row3"><a class="btn ghost" href="#/news">공지</a><a class="btn ghost" href="#/about">모드 정보</a><a class="btn ghost" href="#/codex">도감</a></div></div>'
         : '<div class="menu"><a class="btn" href="#/news">공지·업데이트</a>' +
           '<div class="row2"><a class="btn ghost" href="#/about">모드 정보</a><a class="btn ghost" href="#/codex">도감</a></div></div>') +
@@ -255,7 +255,7 @@
         '<div class="chips">' + orderTags(n.tags).map(tagChip).join('') + '</div>' +
         '<h1>' + (n.version ? '<span class="ver">' + esc(n.version) + '</span> ' : '') + esc(n.title) + '</h1>' +
         '<div class="byline">' + formatDate(n.date) + (n.pinned ? ' · 고정된 공지' : '') + '</div>' +
-        (n.version && fileFor(n.version) ? '<a class="btn small get" href="' + esc(fileFor(n.version).file) + '" download>' + pixelIcon('down', '#1C330A', 10) + '이 버전 받기 (' + esc(fileFor(n.version).name) + ')</a>' : '') +
+        (n.version && fileFor(n.version) ? '<a class="btn small get" href="' + esc(fileFor(n.version).file) + '" download>' + pixelIcon('down', '#FFFFFF', 10) + '이 버전 받기 (' + esc(fileFor(n.version).name) + ')</a>' : '') +
         (n.body ? '<div class="body">' + richText(n.body) + '</div>' : (n.summary && !n.changes.length ? '<div class="body"><p>' + esc(n.summary) + '</p></div>' : '')) + groups +
         (n.images && n.images.length ? '<div class="figs">' + n.images.filter(function (im) { return im.src; }).map(function (im) {
           return '<figure><img src="' + esc(im.src) + '" alt="' + esc(im.caption || n.title) + '" loading="lazy">' + (im.caption ? '<figcaption>' + esc(im.caption) + '</figcaption>' : '') + '</figure>';
@@ -404,7 +404,7 @@
         (f.tested ? '<span class="tag" style="--c:#5BCB6A">게임에서 확인함</span>' : '<span class="tag" style="--c:#F39A3D">게임 확인 전</span>') +
         '</div></div>' +
         (f.note ? '<p class="dl-note">' + esc(f.note) + '</p>' : '') +
-        '<div class="chips"><a class="btn" href="' + esc(f.file) + '" download>' + pixelIcon('down', '#1C330A', 12) + 'jar 파일 받기</a>' +
+        '<div class="chips"><a class="btn" href="' + esc(f.file) + '" download>' + pixelIcon('down', '#FFFFFF', 12) + 'jar 파일 받기</a>' +
         (nt ? '<a class="btn ghost" href="#/news/' + esc(nt.id) + '">바뀐 점 보기</a>' : '') + '</div>' +
         (f.sha256 ? '<p class="hash">SHA-256 <code>' + esc(f.sha256) + '</code></p>' : '');
     } else {

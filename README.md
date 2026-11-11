@@ -14,7 +14,7 @@ admin.html          관리자 페이지 (GitHub 토큰으로 로그인 → 공�
 assets/common.js    공용 도구 (분류 색·픽셀 아이콘·정렬)
 assets/app.js       사이트 화면
 assets/admin.js     관리자 화면
-assets/site.css     디자인 (딥슬레이트 + 연두, 게임 화면 HUD 배치: 위 구석 HUD · 아래 핫바 메뉴 · 인벤토리 칸 도감)
+assets/site.css     디자인 (딥슬레이트 + 진한 초록, 게임 화면 HUD 배치: 위 구석 HUD · 아래 핫바 메뉴 · 인벤토리 칸 도감)
 data/notices.json   ★ 공지·업데이트 (사이트와 게임 안 공지가 같이 읽어요)
 data/codex.json     ★ 능력·무기 도감
 data/site.json      ★ 메인 소개 · 모드 정보 페이지 내용

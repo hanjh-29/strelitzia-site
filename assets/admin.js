@@ -511,7 +511,7 @@
     root.innerHTML = topBar('모드 파일') + '<div class="editor">' +
       '<div class="list-panel px-frame"><h3 style="font-size:14px;margin:4px 0 6px">올라간 버전</h3><div class="items">' +
       (files.length ? files.map(function (f, i) {
-        return '<div class="item" style="--c:' + (i === 0 ? '#A6E04A' : '#555') + '">v' + esc(f.version) + (i === 0 ? ' · 최신' : '') +
+        return '<div class="item" style="--c:' + (i === 0 ? '#3A9D47' : '#555') + '">v' + esc(f.version) + (i === 0 ? ' · 최신' : '') +
           '<small>' + esc(f.date || '') + ' · ' + sizeText(f.size || 0) + (f.tested ? ' · 게임 확인함' : ' · 확인 전') + '</small>' +
           '<span style="display:flex;gap:6px;margin-top:6px"><button class="btn small ghost" data-tested="' + esc(f.version) + '">' + (f.tested ? '확인 전으로' : '게임 확인함') + '</button>' +
           '<button class="btn small danger" data-del="' + esc(f.version) + '">지우기</button></span></div>';

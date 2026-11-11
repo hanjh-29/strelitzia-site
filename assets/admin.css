@@ -44,6 +44,6 @@ textarea.code { font-family: ui-monospace, Consolas, monospace; font-size: 13px;
 .drop { display: grid !important; place-items: center; gap: 4px; padding: 26px 16px; text-align: center; cursor: pointer;
   border: 2px dashed var(--line-2); background: var(--slot); color: var(--ink) !important; font-family: var(--px); }
 .drop small { color: var(--ink-3); font-family: var(--body); }
-.drop.over { border-color: var(--gold); background: rgba(166,224,74,.08); }
+.drop.over { border-color: var(--gold); background: rgba(58,157,71,.08); }
 .list-panel div.item { text-align: left; background: rgba(255,255,255,.04); color: var(--ink); border-left: 4px solid var(--c, var(--line-2)); padding: 8px 10px; font-size: 14px; }
 .list-panel div.item small { display: block; color: var(--ink-2); font-size: 12px; }
