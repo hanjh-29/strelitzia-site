@@ -8,7 +8,8 @@
   const REPO = 'hanjh-29/strelitzia-site';
   const BRANCH = 'main';
   const API = 'https://api.github.com';
-  const FILES = { notices: 'data/notices.json', codex: 'data/codex.json', site: 'data/site.json' };
+  const FILES = { notices: 'data/notices.json', codex: 'data/codex.json', site: 'data/site.json', downloads: 'data/downloads.json' };
+  const MAX_JAR = 25 * 1024 * 1024; // jar 는 25MB 까지 (보통 1~3MB)
   const { TAGS, TAG_ORDER, esc, sortNotices, pixelIcon } = window.SZ;
 
   const root = document.getElementById('admin');
@@ -46,6 +47,16 @@
     const j = await gh('/repos/' + REPO + '/contents/' + path + '?ref=' + encodeURIComponent(ref || BRANCH));
     return { sha: j.sha, text: b64decodeUtf8(j.content) };
   }
+  /** 저장소에 있는 파일의 sha (없으면 null) — 큰 파일도 내용 없이 sha 만 받아와요 */
+  async function fileSha(path) {
+    try { return (await gh('/repos/' + REPO + '/contents/' + path + '?ref=' + BRANCH)).sha; }
+    catch (e) { if (e.status === 404) return null; throw e; }
+  }
+  async function deleteFile(path, message) {
+    const sha = await fileSha(path);
+    if (!sha) return;
+    await gh('/repos/' + REPO + '/contents/' + path, { method: 'DELETE', body: { message: message, sha: sha, branch: BRANCH } });
+  }
   async function writeFile(path, b64, message, sha) {
     const body = { message: message, content: b64, branch: BRANCH };
     if (sha) body.sha = sha;
@@ -56,6 +67,16 @@
   // ================================================================== 데이터 읽기·저장
   async function loadAll() {
     for (const key of Object.keys(FILES)) {
+      if (key === 'downloads') {
+        // 모드 파일 목록은 처음엔 없을 수도 있어요 → 빈 목록으로 시작
+        try { const f0 = await readFile(FILES[key]); S.sha[key] = f0.sha; S.data[key] = JSON.parse(f0.text); }
+        catch (e) {
+          if (e.status !== 404) throw e;
+          S.sha[key] = null;
+          S.data[key] = { schema: 1, requirements: { minecraft: '26.3', fabricLoader: '', fabricApi: '' }, files: [] };
+        }
+        continue;
+      }
       const f = await readFile(FILES[key]);
       S.sha[key] = f.sha;
       S.data[key] = JSON.parse(f.text);
@@ -105,6 +126,16 @@
           ids.add(x.id);
           if (!x.name) out.push(x.id + ': 이름을 적어 주세요');
         });
+      });
+    } else if (key === 'downloads') {
+      if (!Array.isArray(d.files)) return ['files 목록이 없어요'];
+      const vs = new Set();
+      d.files.forEach(function (f) {
+        if (!/^\d+\.\d+\.\d+$/.test(f.version || '')) out.push('버전은 0.5.4 처럼 숫자 세 개예요: ' + (f.version || '?'));
+        if (vs.has(f.version)) out.push('같은 버전이 두 번 있어요: ' + f.version);
+        vs.add(f.version);
+        if (!/^downloads\/[a-z0-9._-]+\.jar$/.test(f.file || '')) out.push(f.version + ': 파일 주소가 이상해요');
+        if (!dateOk(f.date)) out.push(f.version + ': 날짜는 2026-11-12 형식이에요');
       });
     } else if (key === 'site') {
       if (!d.name) out.push('모드 이름(name)이 없어요');
@@ -459,6 +490,115 @@
     });
   }
 
+  // ================================================================== 모드 파일 (jar 올리기)
+  function versionOf(name) { const m = /(\d+\.\d+\.\d+)/.exec(name || ''); return m ? m[1] : ''; }
+  function sizeText(b) { return b >= 1048576 ? (b / 1048576).toFixed(1) + 'MB' : Math.max(1, Math.round(b / 1024)) + 'KB'; }
+  async function sha256Hex(buf) {
+    const h = await crypto.subtle.digest('SHA-256', buf);
+    return Array.from(new Uint8Array(h)).map(function (x) { return x.toString(16).padStart(2, '0'); }).join('');
+  }
+  function bufToB64(buf) {
+    const bytes = new Uint8Array(buf);
+    let bin = '';
+    for (let i = 0; i < bytes.length; i += 0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i + 0x8000));
+    return btoa(bin);
+  }
+  function renderFiles() {
+    const D = S.data.downloads;
+    const files = D.files.slice().sort(function (a, b) { return window.SZ.compareVersion(b.version, a.version); });
+    const updates = S.data.notices.notices.filter(function (n) { return n.kind === 'update' && n.version; });
+    const req = D.requirements || {};
+    root.innerHTML = topBar('모드 파일') + '<div class="editor">' +
+      '<div class="list-panel px-frame"><h3 style="font-size:14px;margin:4px 0 6px">올라간 버전</h3><div class="items">' +
+      (files.length ? files.map(function (f, i) {
+        return '<div class="item" style="--c:' + (i === 0 ? '#E9B949' : '#555') + '">v' + esc(f.version) + (i === 0 ? ' · 최신' : '') +
+          '<small>' + esc(f.date || '') + ' · ' + sizeText(f.size || 0) + (f.tested ? ' · 게임 확인함' : ' · 확인 전') + '</small>' +
+          '<span style="display:flex;gap:6px;margin-top:6px"><button class="btn small ghost" data-tested="' + esc(f.version) + '">' + (f.tested ? '확인 전으로' : '게임 확인함') + '</button>' +
+          '<button class="btn small danger" data-del="' + esc(f.version) + '">지우기</button></span></div>';
+      }).join('') : '<p class="muted">아직 없어요.</p>') + '</div></div>' +
+      '<div class="edit-panel px-frame"><h2>새 버전 올리기</h2>' +
+      '<p class="hint">마인크래프트를 끄고 <code>gradlew build</code> 를 한 뒤, <code>Strelitzia\\build\\libs</code> 안의 <b>strelitzia-버전.jar</b> 를 아래에 끌어다 놓거나 골라 주세요. (<code>-sources</code> 가 붙은 파일은 아니에요)</p>' +
+      '<form class="form" id="ff"><label class="drop" id="drop">jar 파일을 여기로 끌어다 놓기<small id="picked">또는 눌러서 고르기</small><input type="file" id="jar" accept=".jar" hidden></label>' +
+      '<div class="grid3">' + inp('f_version', '버전', '') + inp('f_date', '날짜', new Date().toLocaleDateString('sv-SE'), 'date') +
+      '<label>업데이트 공지 연결<select class="field" id="f_notice"><option value="">(같은 버전 공지 자동)</option>' +
+      updates.map(function (n) { return '<option value="' + esc(n.id) + '">' + esc(n.version + ' · ' + n.title) + '</option>'; }).join('') + '</select></label></div>' +
+      inp('f_note', '한 줄 메모 (받기 화면에 보여요, 비워도 돼요)', '') +
+      '<label class="check"><input type="checkbox" id="f_tested"> 이 버전은 게임에서 확인했어요</label>' +
+      '<div class="actions"><button class="btn" type="submit" id="upBtn">올리기</button><a class="btn ghost" href="index.html#/download" target="_blank" rel="noopener">받기 화면 보기</a></div></form>' +
+      '<div class="section"><h3 style="font-size:15px;margin-bottom:8px">설치에 필요한 것 (받기 화면에 보여요)</h3><form class="form" id="rf"><div class="grid3">' +
+      inp('r_mc', '마인크래프트', req.minecraft) + inp('r_loader', 'Fabric Loader', req.fabricLoader) + inp('r_api', 'Fabric API', req.fabricApi) +
+      '</div><div class="actions"><button class="btn small" type="submit">저장</button></div></form></div></div></div>';
+    bindLogout();
+    let picked = null;
+    const drop = root.querySelector('#drop');
+    const pick = function (file) {
+      if (!file) return;
+      if (!/\.jar$/i.test(file.name)) { toast('.jar 파일만 올릴 수 있어요', true); return; }
+      if (/-(sources|dev)\.jar$/i.test(file.name)) { toast('-sources·-dev 가 붙지 않은 jar 를 골라 주세요', true); return; }
+      if (file.size > MAX_JAR) { toast('25MB 보다 큰 파일은 올릴 수 없어요', true); return; }
+      picked = file;
+      root.querySelector('#picked').textContent = file.name + ' · ' + sizeText(file.size);
+      const v = versionOf(file.name);
+      if (v) {
+        root.querySelector('#f_version').value = v;
+        const n = updates.find(function (x) { return x.version === v; });
+        if (n) root.querySelector('#f_notice').value = n.id;
+      }
+    };
+    root.querySelector('#jar').onchange = function (e) { pick(e.target.files[0]); };
+    drop.addEventListener('dragover', function (e) { e.preventDefault(); drop.classList.add('over'); });
+    drop.addEventListener('dragleave', function () { drop.classList.remove('over'); });
+    drop.addEventListener('drop', function (e) { e.preventDefault(); drop.classList.remove('over'); pick(e.dataTransfer.files[0]); });
+    root.querySelector('#ff').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      if (!picked) { toast('먼저 jar 파일을 골라 주세요', true); return; }
+      const version = val('f_version').trim();
+      if (!/^\d+\.\d+\.\d+$/.test(version)) { toast('버전은 0.5.4 처럼 적어 주세요', true); return; }
+      const exists = D.files.find(function (f) { return f.version === version; });
+      if (exists && !confirm('v' + version + ' 파일이 이미 있어요. 새 파일로 바꿀까요?')) return;
+      const btn = root.querySelector('#upBtn'); btn.disabled = true;
+      try {
+        toast('올리는 중… (몇 초 걸려요)');
+        const buf = await picked.arrayBuffer();
+        const name = 'strelitzia-' + version + '.jar';
+        const path = 'downloads/' + name;
+        await writeFile(path, bufToB64(buf), '모드 파일 올리기: v' + version, await fileSha(path));
+        const entry = { version: version, date: val('f_date') || new Date().toLocaleDateString('sv-SE'), file: path, name: name, size: picked.size,
+          sha256: await sha256Hex(buf), notice: val('f_notice') || null, note: val('f_note').trim(), tested: checked('f_tested') };
+        const backup = D.files.slice();
+        D.files = D.files.filter(function (f) { return f.version !== version; }).concat([entry]);
+        if (await save('downloads', '모드 파일 목록: v' + version + (exists ? ' 바꿈' : ' 추가'))) renderFiles();
+        else D.files = backup;
+      } catch (err) { toast('올리기 실패: ' + err.message, true); }
+      finally { btn.disabled = false; }
+    });
+    root.querySelectorAll('[data-tested]').forEach(function (b) {
+      b.onclick = async function () {
+        const f = D.files.find(function (x) { return x.version === b.dataset.tested; });
+        f.tested = !f.tested;
+        if (await save('downloads', 'v' + f.version + (f.tested ? ' 게임 확인함' : ' 확인 전으로'))) renderFiles(); else f.tested = !f.tested;
+      };
+    });
+    root.querySelectorAll('[data-del]').forEach(function (b) {
+      b.onclick = async function () {
+        const v = b.dataset.del;
+        if (!confirm('v' + v + ' 파일을 받기 목록과 저장소에서 지울까요?')) return;
+        const f = D.files.find(function (x) { return x.version === v; });
+        const backup = D.files.slice();
+        D.files = D.files.filter(function (x) { return x !== f; });
+        if (!(await save('downloads', '모드 파일 목록: v' + v + ' 지움'))) { D.files = backup; return; }
+        try { await deleteFile(f.file, '모드 파일 지우기: v' + v); } catch (err) { toast('목록에선 뺐지만 파일은 못 지웠어요: ' + err.message, true); }
+        renderFiles();
+      };
+    });
+    root.querySelector('#rf').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const before = D.requirements;
+      D.requirements = { minecraft: val('r_mc').trim(), fabricLoader: val('r_loader').trim(), fabricApi: val('r_api').trim() };
+      if (!(await save('downloads', '설치에 필요한 것 수정'))) D.requirements = before;
+    });
+  }
+
   // ================================================================== 사이트 정보 (JSON 직접)
   function renderSite() {
     root.innerHTML = topBar('사이트 정보') + '<div class="edit-panel px-frame"><p class="hint">메인 화면 소개 문구와 「모드 정보」 페이지 내용이에요. 형식(JSON)을 지켜야 저장돼요. 문단 {"p": "..."}, 소제목 {"h": "..."}, 목록 {"list": [...]}, 키 표 {"table": [["키","설명"]]}.</p>' +
@@ -540,7 +680,7 @@
     if (!S.token) return renderLogin();
     S.tab = location.hash.replace('#', '') || 'notices';
     nav.querySelectorAll('a').forEach(function (a) { if (a.dataset.tab === S.tab) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
-    ({ notices: renderNotices, abilities: renderAbilities, weapons: renderWeapons, site: renderSite, backup: renderBackup }[S.tab] || renderNotices)();
+    ({ notices: renderNotices, abilities: renderAbilities, weapons: renderWeapons, files: renderFiles, site: renderSite, backup: renderBackup }[S.tab] || renderNotices)();
   }
   window.addEventListener('hashchange', route);
   window.addEventListener('beforeunload', function (e) {

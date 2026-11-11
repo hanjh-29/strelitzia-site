@@ -1,0 +1,10 @@
+{
+ "schema": 1,
+ "updated": "2026-11-12",
+ "requirements": {
+  "minecraft": "26.3",
+  "fabricLoader": "0.20.1",
+  "fabricApi": "0.165.0+26.3"
+ },
+ "files": []
+}

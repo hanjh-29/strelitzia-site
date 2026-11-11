@@ -358,6 +358,27 @@ kbd {
 .idle p { color: var(--ink-2); margin: 10px 0 18px; }
 .back-link { display: none; font-family: var(--px); font-size: 13px; margin-bottom: 10px; }
 
+/* ---------- 모드 받기 ---------- */
+.dl { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 16px; align-items: start; }
+.dl-main .pbody { padding: 20px 24px; }
+.dl-head { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 16px; align-items: center; margin-bottom: 14px; }
+.dl-head .slot { width: 72px; height: 72px; }
+.dl-head h2 { font-size: 24px; text-shadow: 2px 2px 0 #000; }
+.dl-meta { font-family: var(--px); font-size: 12px; color: var(--ink-3); margin: 2px 0 8px; }
+.dl-note { color: var(--ink-2); font-size: 15px; }
+.dl-main .chips { gap: 8px; margin: 6px 0 4px; }
+.dl-main h3 { font-size: 14px; color: var(--gold); margin: 22px 0 8px; padding-top: 16px; border-top: 2px solid rgba(0,0,0,.35); }
+.steps { margin: 0 0 10px; padding-left: 22px; font-size: 15px; }
+.steps li { margin: 6px 0; }
+.steps li::marker { font-family: var(--px); color: var(--gold); }
+code { font-family: var(--px); font-size: .86em; padding: 1px 5px; background: var(--slot); box-shadow: var(--sunken); color: var(--ink); }
+.hash { margin: 10px 0 0; font-family: var(--px); font-size: 11px; color: var(--ink-3); overflow-wrap: anywhere; }
+.hash code { font-size: 10px; color: var(--ink-3); }
+.small { font-size: 13px; }
+.dl-old .lrow { grid-template-columns: 30px minmax(0, 1fr) auto; }
+.logview .get { margin: -6px 0 16px; }
+.title-screen .menu .row3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+
 /* ---------- 모드 정보: 가이드북 ---------- */
 .guide { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 16px; align-items: start; }
 .guide-toc { position: sticky; top: 16px; }
@@ -402,7 +423,7 @@ kbd {
   .log { grid-template-columns: 340px minmax(0, 1fr); }
 }
 @media (max-width: 860px) {
-  .home, .codex, .log, .guide { grid-template-columns: minmax(0, 1fr); }
+  .home, .codex, .log, .guide, .dl { grid-template-columns: minmax(0, 1fr); }
   .inv-panel, .guide-toc { position: static; }
   .inv .shelf { grid-template-columns: minmax(0, 1fr); gap: 8px; }
   .inv .slots { grid-template-columns: repeat(5, minmax(0, 1fr)); }
@@ -419,7 +440,7 @@ kbd {
   .hudbar { padding-top: 10px; }
   .hud-alert { font-size: 12px; padding: 7px 10px; }
   .hotbar { bottom: 8px; padding: 3px; }
-  .hotbar a { width: 68px; height: 60px; }
+  .hotbar a { width: 62px; height: 58px; }
   .hotbar-name { bottom: 86px; }
   body.game { padding-bottom: 96px; }
   .home { grid-template-columns: minmax(0, 1fr); }

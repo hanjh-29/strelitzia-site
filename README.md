@@ -76,3 +76,22 @@ https://hanjh-29.github.io/strelitzia-site/data/codex.json
 
 `index.html`·`admin.html` 에서 css·js 주소 끝의 `?v=날짜` 를 새 값으로 바꿔 주세요.
 안 바꾸면 방문자 브라우저에 옛 css·js 가 남아서 새 화면과 섞여 깨져 보일 수 있어요.
+
+## 모드 파일 (다운로드)
+
+- 받기 화면: 사이트 `#/download` (핫바 5번 「받기」). 최신 버전 받기 버튼 + 설치 방법 + 지난 버전 목록.
+- 목록: `data/downloads.json` (`files` = 버전별 jar, `requirements` = 설치에 필요한 마크·Fabric 버전)
+- 파일: `downloads/strelitzia-버전.jar` — 지난 버전도 지우지 않고 남겨요.
+- 업데이트 공지에 같은 버전 파일이 있으면 공지 화면에 「이 버전 받기」 버튼이 붙어요.
+- `tested` 가 false 면 받기 화면에 「게임 확인 전」 표시가 떠요.
+
+### 올리는 방법 1 — 관리자 페이지
+
+1. 마인크래프트를 끄고 `gradlew build`
+2. 관리자 페이지 → 「모드 파일」 → `Strelitzia\build\libs\strelitzia-버전.jar` 를 끌어다 놓기 (`-sources` 붙은 파일 말고)
+3. 버전이 파일 이름에서 자동으로 채워져요 → 「올리기」. 게임에서 확인했으면 「게임 확인함」 표시
+
+### 올리는 방법 2 — Claude 에게 「사이트에 올려줘」
+
+PC 의 `Strelitzia\build\libs\strelitzia-버전.jar` 를 가져와서 `downloads/` 에 넣고,
+`data/downloads.json` 에 항목(version·date·file·name·size·sha256·notice·note·tested)을 추가한 뒤 main 에 커밋·푸시해요.

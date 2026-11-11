@@ -4,7 +4,7 @@
   'use strict';
   const { TAGS, TAG_ORDER, pixelIcon, esc, richText, sortNotices, isFresh, formatDate, loadJson } = window.SZ;
   const app = document.getElementById('app');
-  const state = { site: null, notices: [], codex: null };
+  const state = { site: null, notices: [], codex: null, downloads: { requirements: {}, files: [] } };
   const GOLD = '#E9B949';
 
   // ------------------------------------------------------------------ 읽음 표시
@@ -49,6 +49,11 @@
     state.site = site;
     state.notices = sortNotices(notices.notices || []);
     state.codex = codex;
+    // 모드 파일 목록 (없거나 못 읽어도 나머지 화면은 그대로 열려요)
+    try {
+      const dl = await loadJson('data/downloads.json');
+      state.downloads = { requirements: dl.requirements || {}, files: (dl.files || []).slice().sort(function (a, b) { return window.SZ.compareVersion(b.version, a.version); }) };
+    } catch (e) { /* 아직 파일이 없어요 */ }
     const latest = latestUpdate();
     if (latest) document.getElementById('hudVer').textContent = 'v' + latest.version + ' · 능력 ' + codex.abilities.length + '종';
     refreshCounts();
@@ -87,6 +92,9 @@
       '<img src="' + esc(img) + '" alt="" loading="lazy">' + (opts.label ? '<span class="nm">' + esc(name) + '</span>' : '') + '</a>';
   }
   function emptySlots(n) { let s = ''; for (let i = 0; i < n; i++) s += '<span class="slot empty" aria-hidden="true"></span>'; return s; }
+  function latestFile() { return state.downloads.files[0]; }
+  function fileFor(version) { return state.downloads.files.find(function (f) { return f.version === version; }); }
+  function fileSize(b) { return b >= 1048576 ? (b / 1048576).toFixed(1) + 'MB' : Math.max(1, Math.round(b / 1024)) + 'KB'; }
   function abilityColor(id) { const a = ability(id); return a ? a.color : GOLD; }
 
   // ------------------------------------------------------------------ 홈 (타이틀 화면)
@@ -112,8 +120,11 @@
       '<div class="splash" aria-hidden="true">' + (latest ? 'v' + esc(latest.version) + ' 나왔어요!' : '능력자 모드!') + '</div>' +
       '<div class="ko">' + esc(s.nameKo) + ' · 능력자 모드</div>' +
       '<p class="lead">' + esc(s.tagline) + '</p><p class="sub">' + esc(s.intro) + '</p>' +
-      '<div class="menu"><a class="btn" href="#/news">공지·업데이트</a>' +
-      '<div class="row2"><a class="btn ghost" href="#/about">모드 정보</a><a class="btn ghost" href="#/codex">도감</a></div></div>' +
+      (latestFile()
+        ? '<div class="menu"><a class="btn" href="#/download">' + pixelIcon('down', '#3A2A05', 12) + '모드 받기 v' + esc(latestFile().version) + '</a>' +
+          '<div class="row3"><a class="btn ghost" href="#/news">공지</a><a class="btn ghost" href="#/about">모드 정보</a><a class="btn ghost" href="#/codex">도감</a></div></div>'
+        : '<div class="menu"><a class="btn" href="#/news">공지·업데이트</a>' +
+          '<div class="row2"><a class="btn ghost" href="#/about">모드 정보</a><a class="btn ghost" href="#/codex">도감</a></div></div>') +
       '<div class="meta">마인크래프트 ' + esc(s.minecraft || '26.3') + ' · ' + esc(s.loader || 'Fabric') +
       (latest ? ' · 최근 업데이트 ' + formatDate(latest.date) : '') + '</div></section>';
 
@@ -244,6 +255,7 @@
         '<div class="chips">' + orderTags(n.tags).map(tagChip).join('') + '</div>' +
         '<h1>' + (n.version ? '<span class="ver">' + esc(n.version) + '</span> ' : '') + esc(n.title) + '</h1>' +
         '<div class="byline">' + formatDate(n.date) + (n.pinned ? ' · 고정된 공지' : '') + '</div>' +
+        (n.version && fileFor(n.version) ? '<a class="btn small get" href="' + esc(fileFor(n.version).file) + '" download>' + pixelIcon('down', '#3A2A05', 10) + '이 버전 받기 (' + esc(fileFor(n.version).name) + ')</a>' : '') +
         (n.body ? '<div class="body">' + richText(n.body) + '</div>' : (n.summary && !n.changes.length ? '<div class="body"><p>' + esc(n.summary) + '</p></div>' : '')) + groups +
         (n.images && n.images.length ? '<div class="figs">' + n.images.filter(function (im) { return im.src; }).map(function (im) {
           return '<figure><img src="' + esc(im.src) + '" alt="' + esc(im.caption || n.title) + '" loading="lazy">' + (im.caption ? '<figcaption>' + esc(im.caption) + '</figcaption>' : '') + '</figure>';
@@ -375,12 +387,53 @@
       '<section class="two"><div><h2>얻는 방법</h2><p>' + esc(w.obtain) + '</p></div><div><h2>사용 방법</h2><p>' + esc(w.usage) + '</p></div></section>';
   }
 
+  // ------------------------------------------------------------------ 모드 받기
+  function renderDownload() {
+    const req = state.downloads.requirements || {};
+    const files = state.downloads.files;
+    const f = files[0];
+    const noticeOf = function (x) { return x.notice ? state.notices.find(function (n) { return n.id === x.notice; }) : state.notices.find(function (n) { return n.version === x.version; }); };
+    let html = '<div class="page-head"><h1>모드 받기</h1><p>업데이트가 올라오면 여기서 바로 받을 수 있어요.</p></div><div class="dl">';
+    // 왼쪽: 최신 버전
+    html += '<section class="panel dl-main">' + ptitle('down', '최신 버전') + '<div class="pbody">';
+    if (f) {
+      const nt = noticeOf(f);
+      html += '<div class="dl-head"><span class="slot"><img src="img/logo.png" alt=""></span><div>' +
+        '<h2>Strelitzia <span class="ver">v' + esc(f.version) + '</span></h2>' +
+        '<div class="dl-meta">' + formatDate(f.date) + ' · ' + fileSize(f.size || 0) + ' · ' + esc(f.name) + '</div>' +
+        (f.tested ? '<span class="tag" style="--c:#5BCB6A">게임에서 확인함</span>' : '<span class="tag" style="--c:#F39A3D">게임 확인 전</span>') +
+        '</div></div>' +
+        (f.note ? '<p class="dl-note">' + esc(f.note) + '</p>' : '') +
+        '<div class="chips"><a class="btn" href="' + esc(f.file) + '" download>' + pixelIcon('down', '#3A2A05', 12) + 'jar 파일 받기</a>' +
+        (nt ? '<a class="btn ghost" href="#/news/' + esc(nt.id) + '">바뀐 점 보기</a>' : '') + '</div>' +
+        (f.sha256 ? '<p class="hash">SHA-256 <code>' + esc(f.sha256) + '</code></p>' : '');
+    } else {
+      html += '<div class="idle"><p>아직 올라온 파일이 없어요. 첫 버전이 올라오면 여기에 받기 버튼이 생겨요.</p><a class="btn ghost" href="#/news">업데이트 소식 보기</a></div>';
+    }
+    // 설치 방법 (순서가 있어서 번호)
+    html += '<h3>설치 방법</h3><ol class="steps">' +
+      '<li><b>마인크래프트 ' + esc(req.minecraft || '26.3') + '</b> 에 <a href="https://fabricmc.net/use/installer/" target="_blank" rel="noopener">Fabric Loader</a> ' + esc(req.fabricLoader || '') + ' 이상을 깔아요.</li>' +
+      '<li><a href="https://modrinth.com/mod/fabric-api" target="_blank" rel="noopener">Fabric API</a> ' + esc(req.fabricApi || '') + ' 를 받아서 <code>mods</code> 폴더에 넣어요.</li>' +
+      '<li>위에서 받은 <code>strelitzia-버전.jar</code> 를 같은 <code>mods</code> 폴더에 넣어요. 예전 버전 jar 는 지워 주세요.</li>' +
+      '<li>Fabric 으로 게임을 켜고, 월드에서 <kbd>G</kbd> 를 눌러 능력을 골라요.</li></ol>' +
+      '<p class="muted small">함께 노는 서버가 있다면 서버와 모두의 컴퓨터에 같은 버전을 넣어야 해요.</p>';
+    html += '</div></section>';
+    // 오른쪽: 지난 버전
+    html += '<section class="panel dl-old">' + ptitle('book', '지난 버전', '<small>' + files.length + '개</small>') + '<div class="items">' +
+      (files.length > 1 ? files.slice(1).map(function (x) {
+        return '<div class="lrow read"><span class="slot">' + pixelIcon('down', '#7A818D', 12) + '</span>' +
+          '<span><span class="t"><span class="ver">v' + esc(x.version) + '</span> ' + esc(x.name) + '</span><span class="d">' + formatDate(x.date) + ' · ' + fileSize(x.size || 0) + (x.tested ? ' · 확인함' : '') + '</span></span>' +
+          '<a class="btn small ghost" href="' + esc(x.file) + '" download>받기</a></div>';
+      }).join('') : '<div class="empty">아직 지난 버전이 없어요.</div>') + '</div></section>';
+    app.innerHTML = html + '</div>';
+  }
+
   function renderMissing(msg, href, label) {
     app.innerHTML = '<div class="panel idle"><p>' + esc(msg) + '</p><a class="btn ghost" href="' + href + '">' + label + '</a></div>';
   }
 
   // ------------------------------------------------------------------ 핫바 메뉴
-  const NAV_NAME = { home: '홈', news: '공지·업데이트', about: '모드 정보', codex: '도감' };
+  const NAV_NAME = { home: '홈', news: '공지·업데이트', about: '모드 정보', codex: '도감', download: '모드 받기' };
   document.querySelectorAll('.hotbar .ico').forEach(function (el) { el.innerHTML = pixelIcon(el.dataset.icon, 'currentColor', 18); });
   let nameTimer = 0;
   function showHotbarName(text) {
@@ -417,6 +470,7 @@
     else if (page === 'news') renderNews(parts[1]);
     else if (page === 'about') renderAbout(parts[1]);
     else if (page === 'codex') renderCodex(parts[1], parts[2]);
+    else if (page === 'download') renderDownload();
     else renderMissing('없는 페이지예요.', '#/', '홈으로');
     document.title = 'Strelitzia — ' + (NAV_NAME[page] || '공식 정보');
     if (page !== lastPage && NAV_NAME[page]) showHotbarName(NAV_NAME[page]);
