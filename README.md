@@ -14,7 +14,7 @@ admin.html          관리자 페이지 (GitHub 토큰으로 로그인 → 공�
 assets/common.js    공용 도구 (분류 색·픽셀 아이콘·정렬)
 assets/app.js       사이트 화면
 assets/admin.js     관리자 화면
-assets/site.css     디자인 (밤하늘 남색 + 갈무리 도트 글꼴)
+assets/site.css     디자인 (딥슬레이트 + 금, 게임 화면 HUD 배치: 위 구석 HUD · 아래 핫바 메뉴 · 인벤토리 칸 도감)
 data/notices.json   ★ 공지·업데이트 (사이트와 게임 안 공지가 같이 읽어요)
 data/codex.json     ★ 능력·무기 도감
 data/site.json      ★ 메인 소개 · 모드 정보 페이지 내용
@@ -65,3 +65,9 @@ https://hanjh-29.github.io/strelitzia-site/data/codex.json
 ## 글꼴
 
 갈무리 (Galmuri, SIL Open Font License) · Pretendard (SIL Open Font License) — CDN 으로 불러와요.
+
+## 읽음 표시
+
+- 최근 7일 안에 올라온 글 중 아직 안 연 글에 **N** 이 붙고, 위 구석 알림과 핫바 「공지」 칸에 개수가 떠요.
+- 글을 열면 그 글은 읽음이 돼요. 공지 화면의 「모두 읽음으로 표시」로 한 번에 지울 수도 있어요.
+- 읽음 기록은 각자 브라우저(localStorage `strelitzia.read.v1`)에만 저장돼요. 서버나 다른 기기와는 공유되지 않아요.

@@ -8,25 +8,33 @@
 <link rel="icon" href="img/logo.png">
 <link rel="stylesheet" href="assets/site.css">
 </head>
-<body>
-<header class="top">
-  <div class="wrap">
-    <a class="brand" href="#/"><img src="img/logo.png" alt=""><span>Strelitzia</span></a>
-    <nav class="nav" aria-label="주 메뉴">
-      <a href="#/" data-nav="home">홈</a>
-      <a href="#/news" data-nav="news">공지·업데이트<span class="count" id="newCount" hidden></span></a>
-      <a href="#/about" data-nav="about">모드 정보</a>
-      <a href="#/codex" data-nav="codex">도감</a>
-    </nav>
-  </div>
+<body class="game">
+<!-- 화면 위 구석 HUD: 왼쪽 = 모드 이름·버전, 오른쪽 = 안 읽은 새 소식 -->
+<header class="hudbar wrap">
+  <a class="hud-box hud-brand" href="#/">
+    <span class="slot sm"><img src="img/logo.png" alt=""></span>
+    <span class="hud-name"><b>Strelitzia</b><small id="hudVer">능력자 모드</small></span>
+  </a>
+  <a class="hud-box hud-alert" id="hudAlert" href="#/news?unread" aria-live="polite">
+    <span class="bell" aria-hidden="true"></span><span id="hudAlertText">새 소식 없음</span>
+  </a>
 </header>
+
 <main id="app" class="wrap" tabindex="-1"><p class="muted">불러오는 중…</p></main>
-<footer>
-  <div class="wrap">
-    <span>Strelitzia · 마인크래프트 26.3 Fabric 능력자 모드</span>
-    <span>게임 안 공지 화면과 같은 데이터를 써요</span>
-  </div>
+
+<footer class="wrap foot">
+  <span>Strelitzia · 마인크래프트 26.3 Fabric 능력자 모드</span>
+  <span>게임 안 공지 화면과 같은 데이터를 써요</span>
 </footer>
+
+<!-- 화면 아래 가운데: 마크 핫바처럼 생긴 메뉴 (숫자키 1~4) -->
+<div class="hotbar-name" id="hotbarName" aria-hidden="true"></div>
+<nav class="hotbar" aria-label="주 메뉴">
+  <a href="#/" data-nav="home" data-key="1"><i>1</i><span class="ico" data-icon="star"></span><span class="lbl">홈</span></a>
+  <a href="#/news" data-nav="news" data-key="2"><i>2</i><span class="ico" data-icon="bell"></span><span class="lbl">공지</span><b class="count" id="newCount" hidden></b></a>
+  <a href="#/about" data-nav="about" data-key="3"><i>3</i><span class="ico" data-icon="book"></span><span class="lbl">정보</span></a>
+  <a href="#/codex" data-nav="codex" data-key="4"><i>4</i><span class="ico" data-icon="gem"></span><span class="lbl">도감</span></a>
+</nav>
 <script src="assets/common.js"></script>
 <script src="assets/app.js"></script>
 </body>
