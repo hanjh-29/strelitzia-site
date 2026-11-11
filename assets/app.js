@@ -28,7 +28,7 @@
 
   function tagChip(t) {
     const m = TAGS[t] || TAGS.NOTICE;
-    return '<span class="tag" style="--c:' + m.color + '">' + pixelIcon(m.icon, '#17142c', 10) + m.label + '</span>';
+    return '<span class="tag" style="--c:' + m.color + '">' + pixelIcon(m.icon, m.color, 10) + m.label + '</span>';
   }
   function newBadge(n) { return isFresh(n) ? '<span class="new-badge" title="최근 7일 안에 올라온 글">N</span>' : ''; }
   function orderTags(tags) { return TAG_ORDER.filter(function (t) { return tags.indexOf(t) >= 0; }); }
@@ -53,7 +53,7 @@
       '<div class="hero-actions"><a class="btn" href="#/news">공지·업데이트 보기</a><a class="btn ghost" href="#/codex">능력 도감</a></div>' +
     '</div>';
     if (feature) {
-      html += '<article class="latest px-frame"><div class="head"><span class="muted">최신 업데이트</span>' + newBadge(feature) + '</div>' +
+      html += '<article class="latest px-frame hud"><div class="head"><span class="muted">최신 업데이트</span>' + newBadge(feature) + '</div>' +
         '<div class="chips">' + orderTags(feature.tags).map(tagChip).join('') + '</div>' +
         '<h2>' + (feature.version ? '<span class="ver">' + esc(feature.version) + '</span> ' : '') + esc(feature.title) + '</h2>' +
         '<ul>' + feature.changes.slice(0, 4).map(function (c) {
@@ -76,7 +76,7 @@
 
   function newsRow(n) {
     return '<a class="row' + (n.important ? ' important' : '') + '" style="--c:' + noticeColor(n) + '" href="#/news/' + esc(n.id) + '">' +
-      '<div class="when">' + (n.version ? '<span class="ver">' + esc(n.version) + '</span>' : (n.pinned ? pixelIcon('pin', '#F0596B', 14) : '')) + formatDate(n.date) + '</div>' +
+      '<div class="when">' + (n.version ? '<span class="ver">' + esc(n.version) + '</span>' : (n.pinned ? pixelIcon('pin', '#E5484D', 12) : '')) + formatDate(n.date) + '</div>' +
       '<div><h3>' + esc(n.title) + newBadge(n) + '</h3><p>' + esc(n.summary) + '</p></div>' +
       '<div class="tags">' + orderTags(n.tags).map(tagChip).join('') + '</div></a>';
   }
@@ -137,7 +137,7 @@
     }).join('');
     const versions = state.notices.filter(function (x) { return x.kind === 'update'; });
     app.innerHTML = '<a class="back" href="#/news">← 공지·업데이트</a>' +
-      '<div class="detail"><article class="article px-frame">' +
+      '<div class="detail"><article class="article px-frame hud">' +
         '<div class="chips">' + orderTags(n.tags).map(tagChip).join('') + newBadge(n) + '</div>' +
         '<h1>' + (n.version ? '<span class="ver">' + esc(n.version) + '</span> ' : '') + esc(n.title) + '</h1>' +
         '<div class="byline">' + formatDate(n.date) + (n.kind === 'notice' ? ' · 공지' : ' · 업데이트') + '</div>' +
@@ -160,10 +160,10 @@
   function renderAbout() {
     const s = state.site;
     app.innerHTML = '<div class="page-head"><h1>모드 정보</h1><p>Strelitzia를 처음 보는 분도 한눈에 알 수 있게 정리했어요.</p></div>' +
-      '<div class="about"><nav class="toc" aria-label="모드 정보 목차">' + s.about.map(function (sec) {
-        return '<a href="#/about/' + sec.id + '">' + pixelIcon(sec.icon, '#F2C14E', 14) + esc(sec.title) + '</a>';
+      '<div class="about"><nav class="toc px-frame" aria-label="모드 정보 목차">' + s.about.map(function (sec) {
+        return '<a href="#/about/' + sec.id + '">' + pixelIcon(sec.icon, '#E9B949', 14) + esc(sec.title) + '</a>';
       }).join('') + '</nav><div>' + s.about.map(function (sec) {
-        return '<section class="px-frame" id="sec-' + sec.id + '"><h2>' + pixelIcon(sec.icon, '#F2C14E', 18) + esc(sec.title) + '</h2>' + sec.blocks.map(block).join('') + '</section>';
+        return '<section class="px-frame" id="sec-' + sec.id + '"><h2>' + pixelIcon(sec.icon, '#E9B949', 18) + esc(sec.title) + '</h2>' + sec.blocks.map(block).join('') + '</section>';
       }).join('') + '</div></div>';
   }
   function block(b) {
@@ -230,7 +230,7 @@
     const w = a.weapon ? weapon(a.weapon) : null;
     const related = state.codex.weapons.filter(function (x) { return x.ability === a.id && x.id !== a.weapon; });
     app.innerHTML = '<a class="back" href="#/codex">← 도감</a>' +
-      '<section class="codex-head px-frame" style="--glow:' + esc(a.color) + '"><div class="portrait"><img src="' + esc(a.image) + '" alt="' + esc(a.name) + ' 대표 그림"></div>' +
+      '<section class="codex-head px-frame hud" style="--glow:' + esc(a.color) + '"><div class="portrait"><img src="' + esc(a.image) + '" alt="' + esc(a.name) + ' 대표 그림"></div>' +
       '<div><h1>' + esc(a.name) + '</h1><span class="en">' + esc(a.en) + '</span>' +
       '<div class="desc"><p>' + esc(a.summary) + '</p><p class="muted">' + esc(a.description) + '</p></div>' +
       '<div class="facts"><span>분류 <b>' + esc(a.category) + '</b></span><span>역할 <b>' + esc(a.roles.join(', ')) + '</b></span>' +
@@ -251,7 +251,7 @@
     if (!w) return renderMissing('그 무기를 찾을 수 없어요.', '#/codex', '도감으로');
     const a = ability(w.ability);
     app.innerHTML = '<a class="back" href="#/codex">← 도감</a>' +
-      '<section class="codex-head px-frame" style="--glow:' + esc(a ? a.color : '#F2C14E') + '"><div class="portrait"><img src="' + esc(w.image) + '" alt="' + esc(w.name) + ' 모델"></div>' +
+      '<section class="codex-head px-frame hud" style="--glow:' + esc(a ? a.color : '#F2C14E') + '"><div class="portrait"><img src="' + esc(w.image) + '" alt="' + esc(w.name) + ' 모델"></div>' +
       '<div><h1>' + esc(w.name) + '</h1><span class="en">' + esc(w.en) + '</span>' +
       '<div class="desc"><p>' + esc(w.summary) + '</p></div>' +
       '<div class="facts"><span>등급 <b>' + esc(w.grade) + '</b></span><span>종류 <b>' + esc(w.category) + '</b></span>' +
