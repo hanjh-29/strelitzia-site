@@ -94,7 +94,7 @@
     const s = state.site;
     const latest = latestUpdate();
     const quests = state.notices.slice(0, 7);
-    const ab = state.codex.abilities, wp = state.codex.weapons;
+    const ab = state.codex.abilities;
     let html = '<div class="home">';
 
     // 왼쪽: 소식 기록 (안 읽은 글은 N)
@@ -128,13 +128,13 @@
     }
     html += '</div>';
 
-    // 아래: 인벤토리 (능력·무기 칸)
-    html += '<section class="panel inv">' + ptitle('gem', '도감', '<a href="#/codex">전체 보기</a>') +
-      '<div class="shelf"><h3>능력<small>' + ab.length + '종</small></h3><div class="slots">' +
-        ab.map(function (a) { return itemSlot('#/codex/ability/' + a.id, a.image, a.name, a.color, { label: true }); }).join('') + emptySlots(Math.max(0, 9 - ab.length)) + '</div></div>' +
-      '<div class="shelf"><h3>무기<small>' + wp.length + '종</small></h3><div class="slots">' +
-        wp.map(function (w) { return itemSlot('#/codex/weapon/' + w.id, w.image, w.name, abilityColor(w.ability), { label: true }); }).join('') + emptySlots(Math.max(0, 9 - wp.length)) + '</div></div>' +
-      '</section>';
+    // 아래: 능력 카드 (게임 안 능력 선택 화면 카드와 같은 모양) — 누르면 도감 설명으로
+    html += '<section class="panel inv">' + ptitle('star', '능력 ' + ab.length + '종', '<a href="#/codex">도감 전체</a>') +
+      '<div class="ab-cards">' + ab.map(function (a) {
+        return '<a class="ab-card" style="--c:' + esc(a.color) + '" href="#/codex/ability/' + esc(a.id) + '">' +
+          '<b>' + esc(a.name) + '</b><span>' + esc(a.en) + '</span>' +
+          '<img src="' + esc(a.image) + '" alt="' + esc(a.name) + ' 대표 그림" loading="lazy"></a>';
+      }).join('') + '</div></section>';
     app.innerHTML = html;
   }
   /** 최신 업데이트 판: 바뀐 점이 적으면 바로 앞 버전 것도 이어서 (최대 5줄) */

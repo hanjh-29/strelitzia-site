@@ -246,6 +246,22 @@ kbd {
 .inv .slots { grid-template-columns: repeat(9, minmax(0, 1fr)); }
 .nm { position: absolute; left: 0; right: 0; bottom: 4px; text-align: center; font-family: var(--px); font-size: 10px; line-height: 1; color: var(--ink); text-shadow: 1px 1px 0 #000; }
 
+/* 홈 능력 카드: 게임 안 능력 선택 화면(G키) 카드와 같은 모양 — 능력 색 바탕 + 밝은 테두리 + 큰 그림 */
+.ab-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 10px; padding: 14px; }
+.ab-card {
+  position: relative; display: block; overflow: hidden; aspect-ratio: 1.58; padding: 8px 12px; color: #fff;
+  background: linear-gradient(160deg, color-mix(in srgb, var(--c) 42%, #15161b), color-mix(in srgb, var(--c) 22%, #0e0f13));
+  border: 2px solid color-mix(in srgb, var(--c) 70%, #fff 10%);
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,.12), inset -2px -2px 0 rgba(0,0,0,.35);
+}
+.ab-card:hover { text-decoration: none; filter: brightness(1.12); }
+.ab-card b {
+  position: relative; z-index: 1; display: block; font-family: 'Galmuri11 Bold', 'Galmuri11', monospace; font-weight: 700;
+  font-size: 20px; line-height: 1.2; color: color-mix(in srgb, var(--c) 70%, #fff); text-shadow: 2px 2px 0 rgba(0,0,0,.55);
+}
+.ab-card span { position: relative; z-index: 1; display: block; font-family: var(--px); font-size: 14px; line-height: 1.2; color: #E8E8E8; text-shadow: 2px 2px 0 rgba(0,0,0,.55); }
+.ab-card img { position: absolute; right: 6%; bottom: 4%; height: 82%; width: auto; max-width: 70%; object-fit: contain; image-rendering: pixelated; }
+
 /* ---------- 도감: 인벤토리 + 설명 판 ---------- */
 .codex { display: grid; grid-template-columns: 420px minmax(0, 1fr); gap: 16px; align-items: start; }
 .inv-panel { position: sticky; top: 16px; }
@@ -394,7 +410,10 @@ kbd {
   .home { grid-template-columns: minmax(0, 1fr); }
   .title-screen { padding: 22px 8px; }
   .title-screen .splash { margin-left: 110px; }
-  .inv .slots, .inv-panel .slots { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .inv-panel .slots { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .ab-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 10px; gap: 8px; }
+  .ab-card b { font-size: 16px; }
+  .ab-card span { font-size: 11px; }
   .inv-panel .slot.empty { display: none; }
   .entry .head { grid-template-columns: minmax(0, 1fr); }
   .entry .head > .slot { width: 140px; }
