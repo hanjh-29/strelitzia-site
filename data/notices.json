@@ -1039,6 +1039,31 @@
    "body": "",
    "images": [],
    "important": false
+  },
+  {
+   "id": "v0.5.6",
+   "kind": "update",
+   "version": "0.5.6",
+   "date": "2026-11-12",
+   "title": "류트 설명창 꾸미기",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "류트에 마우스를 올리면 뜨는 설명창을 바드답게 꾸몄어요",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "류트 설명창: 보랏빛 바탕 + 라일락 테두리 + 네 모서리 금색 음표"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "이름을 가운데로 (♫ 류트 ♫) + 「바드의 악기」, 오선 구분선, Z 악기 분쇄 · X 서사시 · P 마력 악기 안내"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
   }
  ]
 }
