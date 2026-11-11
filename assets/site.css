@@ -254,7 +254,22 @@ kbd {
   border: 2px solid color-mix(in srgb, var(--c) 70%, #fff 10%);
   box-shadow: inset 2px 2px 0 rgba(255,255,255,.12), inset -2px -2px 0 rgba(0,0,0,.35);
 }
-.ab-card:hover { text-decoration: none; filter: brightness(1.12); }
+.ab-card { transition: box-shadow .15s, border-color .15s, filter .15s; }
+/* 마우스를 올리면: 살짝 빛나고 왼쪽 아래에 「살펴보기」 */
+.ab-card:hover, .ab-card:focus-visible {
+  text-decoration: none; filter: brightness(1.1);
+  border-color: color-mix(in srgb, var(--c) 35%, #fff);
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,.18), inset -2px -2px 0 rgba(0,0,0,.35),
+    0 0 10px color-mix(in srgb, var(--c) 70%, transparent), 0 0 22px color-mix(in srgb, var(--c) 35%, transparent);
+}
+.ab-card::after {
+  content: '살펴보기'; position: absolute; left: 12px; bottom: 8px; z-index: 1;
+  font-family: var(--px); font-size: 15px; line-height: 1; color: #fff; text-shadow: 2px 2px 0 rgba(0,0,0,.6);
+  opacity: 0; transition: opacity .15s;
+}
+.ab-card:hover::after, .ab-card:focus-visible::after { opacity: 1; }
+/* 마우스가 없는 휴대폰은 늘 보여줘요 */
+@media (hover: none) { .ab-card::after { opacity: 1; font-size: 12px; } }
 .ab-card b {
   position: relative; z-index: 1; display: block; font-family: 'Galmuri11 Bold', 'Galmuri11', monospace; font-weight: 700;
   font-size: 20px; line-height: 1.2; color: color-mix(in srgb, var(--c) 70%, #fff); text-shadow: 2px 2px 0 rgba(0,0,0,.55);
