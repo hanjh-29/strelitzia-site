@@ -15,7 +15,7 @@ textarea.code { font-family: ui-monospace, Consolas, monospace; font-size: 13px;
 .list-panel { padding: 14px; position: sticky; top: 84px; max-height: calc(100vh - 110px); display: flex; flex-direction: column; }
 .list-panel .items { overflow: auto; margin-top: 10px; display: flex; flex-direction: column; gap: 4px; }
 .list-panel button.item {
-  border-radius: 8px; text-align: left; background: rgba(255,255,255,.04); color: var(--ink); border: 0; border-left: 4px solid var(--c, var(--line-2));
+  border-radius: 0; text-align: left; background: rgba(255,255,255,.04); color: var(--ink); border: 0; border-left: 4px solid var(--c, var(--line-2));
   padding: 8px 10px; cursor: pointer; font: inherit; font-size: 14px;
 }
 .list-panel button.item small { display: block; color: var(--ink-2); font-size: 12px; }
@@ -24,17 +24,17 @@ textarea.code { font-family: ui-monospace, Consolas, monospace; font-size: 13px;
 .edit-panel h2 { font-size: 20px; margin-bottom: 16px; }
 .rows { display: flex; flex-direction: column; gap: 8px; }
 .rowedit { display: grid; grid-template-columns: 150px 1fr 40px; gap: 8px; }
-.skillbox { padding: 14px; background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 12px; display: grid; gap: 10px; }
+.skillbox { padding: 14px; background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 0; display: grid; gap: 10px; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; align-items: center; }
 .btn.danger { background: #E5484D; color: #fff; }
 .btn.small { padding: 7px 10px; font-size: 13px; }
-.iconbtn { background: rgba(255,255,255,.08); color: var(--ink); border: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
-.toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 50; padding: 12px 18px; background: rgba(34,38,46,.92); color: var(--ink); font-size: 14px; border: 1px solid var(--line-2); border-radius: 12px; backdrop-filter: blur(12px); max-width: 90vw; }
+.iconbtn { background: rgba(255,255,255,.08); color: var(--ink); border: 1px solid var(--line); border-radius: 0; cursor: pointer; }
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%); z-index: 50; padding: 12px 18px; background: rgba(34,38,46,.92); color: var(--ink); font-size: 14px; border: 1px solid var(--line-2); border-radius: 0; backdrop-filter: blur(12px); max-width: 90vw; }
 .toast.bad { background: rgba(74,31,36,.95); border-color: #E5484D; }
 .history { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
-.history div { border-radius: 10px; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; padding: 10px 12px; background: rgba(255,255,255,.04); font-size: 14px; }
+.history div { border-radius: 0; display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; padding: 10px 12px; background: rgba(255,255,255,.04); font-size: 14px; }
 .history small { color: var(--ink-2); display: block; }
-.thumb { border-radius: 8px; width: 64px; height: 64px; object-fit: contain; image-rendering: pixelated; background: rgba(0,0,0,.25); }
+.thumb { border-radius: 0; width: 64px; height: 64px; object-fit: contain; image-rendering: pixelated; background: rgba(0,0,0,.25); }
 .hint { font-size: 13px; color: var(--ink-2); }
 @media (max-width: 900px) {
   .editor, .grid2, .grid3 { grid-template-columns: 1fr; }
