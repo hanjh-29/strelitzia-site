@@ -1064,6 +1064,35 @@
    "body": "",
    "images": [],
    "important": false
+  },
+  {
+   "id": "v0.5.7",
+   "kind": "update",
+   "version": "0.5.7",
+   "date": "2026-11-12",
+   "title": "류트 설명창 다시 꾸미기",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "류트 설명창을 금 테 액자와 보석·음표로 더 화려하게 바꾸고, 스킬 안내를 읽기 쉽게 정리했어요",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "류트 설명창: 금 테를 두른 보라 액자, 모서리 보석 4개, 위 테두리 위에 앉은 금 음표, 반짝이 별"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "스킬 안내를 세 줄로: Z 악기 분쇄 · X 서사시 · P 마력 악기 (키·이름·쓰는 법)"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "류트 설명창에서 공격 피해·공격 속도·부서지지 않음, 「바드 전용」 안내를 뺐어요"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
   }
  ]
 }
