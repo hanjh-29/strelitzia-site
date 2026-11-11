@@ -28,7 +28,7 @@
 
   function tagChip(t) {
     const m = TAGS[t] || TAGS.NOTICE;
-    return '<span class="tag" style="--c:' + m.color + '">' + pixelIcon(m.icon, '#17142c', 10) + m.label + '</span>';
+    return '<span class="tag" style="--c:' + m.color + '">' + pixelIcon(m.icon, m.color, 10) + m.label + '</span>';
   }
   function newBadge(n) { return isFresh(n) ? '<span class="new-badge" title="최근 7일 안에 올라온 글">N</span>' : ''; }
   function orderTags(tags) { return TAG_ORDER.filter(function (t) { return tags.indexOf(t) >= 0; }); }
@@ -42,25 +42,27 @@
     const pinned = state.notices.filter(function (n) { return n.pinned; });
     const recent = state.notices.filter(function (n) { return n.kind === 'update'; }).slice(0, 5);
     const feature = latest || top;
+    const newest = state.notices.find(function (n) { return n.mainTag === 'NEW'; });
+    const splash = (s.splash && s.splash.length) ? s.splash[Math.floor(Math.random() * s.splash.length)] : (newest ? newest.title + '!' : '');
     let html = '<section class="hero"><div>' +
-      '<div class="hero-title"><img src="' + esc(s.logo) + '" alt=""><div><h1>' + esc(s.name) + '</h1><span class="ko">' + esc(s.nameKo) + ' · 능력자 모드</span></div></div>' +
+      '<div class="hero-title"><img src="' + esc(s.logo) + '" alt=""><div><h1>' + esc(s.name) + '</h1>' + (splash ? '<span class="splash" aria-hidden="true">' + esc(splash) + '</span>' : '') + '<span class="ko">' + esc(s.nameKo) + ' · 능력자 모드</span></div></div>' +
       '<p class="lead">' + esc(s.tagline) + '</p><p class="sub">' + esc(s.intro) + '</p>' +
       '<div class="hero-meta">' +
         '<div><b>' + esc(latest ? latest.version : '-') + '</b><span>최신 버전</span></div>' +
         '<div><b>' + esc(latest && latest.date ? formatDate(latest.date) : '-') + '</b><span>최근 업데이트</span></div>' +
         '<div><b>' + (state.codex.abilities || []).length + '</b><span>능력</span></div>' +
       '</div>' +
-      '<div class="hero-actions"><a class="btn" href="#/news">공지·업데이트 보기</a><a class="btn ghost" href="#/codex">능력 도감</a></div>' +
+      '<div class="hero-actions"><a class="btn primary" href="#/news">공지·업데이트 보기</a><a class="btn" href="#/codex">능력 도감</a></div>' +
     '</div>';
     if (feature) {
-      html += '<article class="latest px-frame"><div class="head"><span class="muted">최신 업데이트</span>' + newBadge(feature) + '</div>' +
+      html += '<article class="latest mc-gui"><div class="head"><span class="muted">최신 업데이트</span>' + newBadge(feature) + '</div>' +
         '<div class="chips">' + orderTags(feature.tags).map(tagChip).join('') + '</div>' +
         '<h2>' + (feature.version ? '<span class="ver">' + esc(feature.version) + '</span> ' : '') + esc(feature.title) + '</h2>' +
         '<ul>' + feature.changes.slice(0, 4).map(function (c) {
           const m = TAGS[c.tag] || TAGS.NOTICE;
           return '<li>' + pixelIcon(m.icon, m.color, 12) + '<span>' + esc(c.text) + '</span></li>';
         }).join('') + '</ul>' +
-        '<a class="btn ghost" href="#/news/' + esc(feature.id) + '">자세히 보기</a></article>';
+        '<a class="btn" href="#/news/' + esc(feature.id) + '">자세히 보기</a></article>';
     }
     html += '</section>';
 
@@ -180,7 +182,7 @@
   const codexFilter = { tab: 'abilities', q: '', cat: '' };
   function abilityCard(a) {
     return '<a class="card px-frame" style="--glow:' + esc(a.color) + '" href="#/codex/ability/' + esc(a.id) + '">' +
-      '<div class="portrait"><img src="' + esc(a.image) + '" alt="' + esc(a.name) + ' 대표 그림" loading="lazy"></div>' +
+      '<div class="portrait slot"><img src="' + esc(a.image) + '" alt="' + esc(a.name) + ' 대표 그림" loading="lazy"></div>' +
       '<h3>' + esc(a.name) + '</h3><span class="en">' + esc(a.en) + '</span><p>' + esc(a.summary) + '</p>' +
       '<div class="meta"><span>' + esc(a.category) + '</span>' + a.roles.map(function (r) { return '<span>' + esc(r) + '</span>'; }).join('') + '</div>' +
       '<div class="keys">' + a.skills.map(function (s) { return '<img src="' + esc(s.icon) + '" alt="' + esc(s.key + ' ' + s.name) + '" title="' + esc(s.key + ' · ' + s.name) + '" loading="lazy">'; }).join('') + '</div></a>';
@@ -188,7 +190,7 @@
   function weaponCard(w) {
     const a = ability(w.ability);
     return '<a class="card weapon px-frame" style="--glow:' + esc(a ? a.color : '#F2C14E') + '" href="#/codex/weapon/' + esc(w.id) + '">' +
-      '<div class="portrait"><img src="' + esc(w.image) + '" alt="' + esc(w.name) + ' 모델" loading="lazy"></div>' +
+      '<div class="portrait slot"><img src="' + esc(w.image) + '" alt="' + esc(w.name) + ' 모델" loading="lazy"></div>' +
       '<h3>' + esc(w.name) + '</h3><span class="en">' + esc(w.en) + '</span><p>' + esc(w.summary) + '</p>' +
       '<div class="meta"><span>' + esc(w.grade) + '</span><span>' + esc(w.category) + '</span>' + (a ? '<span>' + esc(a.name) + '</span>' : '') + '</div></a>';
   }
@@ -230,14 +232,14 @@
     const w = a.weapon ? weapon(a.weapon) : null;
     const related = state.codex.weapons.filter(function (x) { return x.ability === a.id && x.id !== a.weapon; });
     app.innerHTML = '<a class="back" href="#/codex">← 도감</a>' +
-      '<section class="codex-head px-frame" style="--glow:' + esc(a.color) + '"><div class="portrait"><img src="' + esc(a.image) + '" alt="' + esc(a.name) + ' 대표 그림"></div>' +
-      '<div><h1>' + esc(a.name) + '</h1><span class="en">' + esc(a.en) + '</span>' +
+      '<section class="codex-head mc-gui" style="--glow:' + esc(a.color) + '"><div class="portrait slot"><img src="' + esc(a.image) + '" alt="' + esc(a.name) + ' 대표 그림"></div>' +
+      '<div><h1><span class="swatch"></span>' + esc(a.name) + '</h1><span class="en">' + esc(a.en) + '</span>' +
       '<div class="desc"><p>' + esc(a.summary) + '</p><p class="muted">' + esc(a.description) + '</p></div>' +
       '<div class="facts"><span>분류 <b>' + esc(a.category) + '</b></span><span>역할 <b>' + esc(a.roles.join(', ')) + '</b></span>' +
       '<span>사용 무기 <b>' + (w ? '<a href="#/codex/weapon/' + esc(w.id) + '">' + esc(w.name) + '</a>' : '없음') + '</b></span>' +
       '<span>추가된 버전 <b class="ver">' + esc(a.since) + '</b></span></div></div></section>' +
       '<div class="section-head"><h2>스킬 구성</h2></div><div class="skills">' + a.skills.map(function (s) {
-        return '<div class="skill px-frame"><kbd>' + esc(s.key) + '</kbd><img src="' + esc(s.icon) + '" alt="">' +
+        return '<div class="skill px-frame"><kbd>' + esc(s.key) + '</kbd><div class="slot"><img src="' + esc(s.icon) + '" alt=""></div>' +
           '<div><h3>' + esc(s.name) + '<span class="cd">' + (s.type === 'passive' ? '패시브' : s.type === 'charge' ? '충전형' : '액티브') + (s.cooldown ? ' · 쿨타임 ' + esc(s.cooldown) : '') + '</span></h3>' +
           '<p>' + esc(s.desc) + '</p><div class="how">조작: ' + esc(s.how) + '</div></div></div>';
       }).join('') + '</div>' +
@@ -251,8 +253,8 @@
     if (!w) return renderMissing('그 무기를 찾을 수 없어요.', '#/codex', '도감으로');
     const a = ability(w.ability);
     app.innerHTML = '<a class="back" href="#/codex">← 도감</a>' +
-      '<section class="codex-head px-frame" style="--glow:' + esc(a ? a.color : '#F2C14E') + '"><div class="portrait"><img src="' + esc(w.image) + '" alt="' + esc(w.name) + ' 모델"></div>' +
-      '<div><h1>' + esc(w.name) + '</h1><span class="en">' + esc(w.en) + '</span>' +
+      '<section class="codex-head mc-gui" style="--glow:' + esc(a ? a.color : '#F2C14E') + '"><div class="portrait slot"><img src="' + esc(w.image) + '" alt="' + esc(w.name) + ' 모델"></div>' +
+      '<div><h1><span class="swatch"></span>' + esc(w.name) + '</h1><span class="en">' + esc(w.en) + '</span>' +
       '<div class="desc"><p>' + esc(w.summary) + '</p></div>' +
       '<div class="facts"><span>등급 <b>' + esc(w.grade) + '</b></span><span>종류 <b>' + esc(w.category) + '</b></span>' +
       '<span>능력 <b>' + (a ? '<a href="#/codex/ability/' + esc(a.id) + '">' + esc(a.name) + '</a>' : '-') + '</b></span>' +

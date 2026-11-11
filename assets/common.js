@@ -4,11 +4,11 @@
 
   /** 업데이트 분류 — 색과 픽셀 아이콘. 새 분류를 추가하면 여기에만 넣으면 돼요 */
   const TAGS = {
-    NEW: { label: 'NEW', name: '새 기능', color: '#5BCB6A', icon: 'plus' },
-    UPDATE: { label: 'UPDATE', name: '개선·변경', color: '#58A6FF', icon: 'up' },
-    FIX: { label: 'FIX', name: '오류 수정', color: '#F39A3D', icon: 'wrench' },
-    BALANCE: { label: 'BALANCE', name: '밸런스', color: '#B98AF7', icon: 'scale' },
-    NOTICE: { label: 'NOTICE', name: '중요 공지', color: '#F0596B', icon: 'bell' }
+    NEW: { label: 'NEW', name: '새 기능', color: '#55FF55', icon: 'plus' },
+    UPDATE: { label: 'UPDATE', name: '개선·변경', color: '#55FFFF', icon: 'up' },
+    FIX: { label: 'FIX', name: '오류 수정', color: '#FFAA00', icon: 'wrench' },
+    BALANCE: { label: 'BALANCE', name: '밸런스', color: '#FF55FF', icon: 'scale' },
+    NOTICE: { label: 'NOTICE', name: '중요 공지', color: '#FF5555', icon: 'bell' }
   };
   const TAG_ORDER = ['NEW', 'UPDATE', 'FIX', 'BALANCE', 'NOTICE'];
 
