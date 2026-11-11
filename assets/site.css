@@ -17,8 +17,8 @@
   --ink: #ECE8DF;           /* 글자 */
   --ink-2: #A3A9B4;         /* 보조 글자 */
   --ink-3: #7A818D;         /* 흐린 글자 */
-  --gold: #E9B949;          /* 강조 */
-  --gold-ink: #3A2A05;      /* 금색 위 글자 */
+  --gold: #A6E04A;          /* 강조: 연두색 (변수 이름은 예전 그대로 gold) */
+  --gold-ink: #1C330A;      /* 연두색 버튼 위 글자 */
   --red: #E5484D;
   --r: 0;
   --px: 'Galmuri11', 'Galmuri9', monospace;   /* 도트 글꼴: 제목·라벨 */
@@ -213,7 +213,7 @@ kbd {
 .title-screen .logo { width: 96px; height: 96px; image-rendering: pixelated; filter: drop-shadow(4px 4px 0 rgba(0,0,0,.45)); }
 .title-screen h1 { font-size: clamp(36px, 5vw, 56px); line-height: 1.05; margin-top: 12px; text-shadow: 4px 4px 0 #000; }
 .title-screen .ko { font-family: var(--px); font-size: 13px; color: var(--ink-3); margin-top: 6px; }
-.title-screen .splash { font-family: var(--px); font-size: 14px; color: #FFE45C; text-shadow: 2px 2px 0 #3d3300; transform: rotate(-8deg); margin: -2px 0 0 170px; }
+.title-screen .splash { font-family: var(--px); font-size: 14px; color: #E4F56A; text-shadow: 2px 2px 0 #26360a; transform: rotate(-8deg); margin: -2px 0 0 170px; }
 .title-screen .lead { font-size: 16px; font-weight: 600; margin: 18px 0 6px; max-width: 34ch; }
 .title-screen .sub { color: var(--ink-2); max-width: 44ch; font-size: 14px; }
 .title-screen .menu { display: grid; gap: 8px; width: min(320px, 100%); margin-top: 14px; }
@@ -330,7 +330,7 @@ kbd {
 .loglist .items { max-height: calc(100vh - 340px); min-height: 320px; overflow: auto; }
 .lrow { display: grid; grid-template-columns: 30px minmax(0, 1fr) auto; gap: 10px; align-items: center; padding: 9px 12px; color: var(--ink); border-bottom: 1px solid rgba(0,0,0,.35); border-left: 3px solid transparent; }
 .lrow:hover { background: rgba(255,255,255,.04); text-decoration: none; }
-.lrow[aria-current="true"] { background: rgba(233,185,73,.08); border-left-color: var(--gold); }
+.lrow[aria-current="true"] { background: rgba(166,224,74,.08); border-left-color: var(--gold); }
 .lrow .slot { width: 30px; height: 30px; border-width: 1px; }
 .lrow .t { display: block; font-size: 14px; line-height: 1.4; }
 .lrow .d { display: block; font-family: var(--px); font-size: 11px; color: var(--ink-3); }
@@ -386,7 +386,7 @@ code { font-family: var(--px); font-size: .86em; padding: 1px 5px; background: v
 .guide-toc a { display: flex; align-items: center; gap: 10px; padding: 5px 8px 5px 5px; color: var(--ink-2); font-family: var(--px); font-size: 13px; border: 2px solid transparent; }
 .guide-toc a .slot { width: 30px; height: 30px; border-width: 1px; flex: none; }
 .guide-toc a:hover { color: var(--ink); background: rgba(255,255,255,.04); text-decoration: none; }
-.guide-toc a[aria-current="true"] { color: var(--ink); border-color: var(--gold); background: rgba(233,185,73,.07); }
+.guide-toc a[aria-current="true"] { color: var(--ink); border-color: var(--gold); background: rgba(166,224,74,.07); }
 .guide-page .pbody { padding: 24px 28px; }
 .guide-page h2 { display: flex; align-items: center; gap: 10px; font-size: 22px; margin-bottom: 16px; text-shadow: 2px 2px 0 #000; }
 .guide-page h3 { font-size: 14px; color: var(--gold); margin: 20px 0 6px; }
