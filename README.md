@@ -100,3 +100,9 @@ PC 의 `Strelitzia\build\libs\strelitzia-버전.jar` 를 가져와서 `downloads
 
 모드를 고쳐서 버전을 올릴 때마다 이 사이트 `data/notices.json` 에도 그 버전의 업데이트 글을 같이 올려요.
 (id `v버전`, kind `update`, 바뀐 점은 모드 README 버전 기록과 같게. 새 기능 NEW · 개선 UPDATE · 오류 FIX · 밸런스 BALANCE)
+
+## 검색 엔진에 안 뜨게 (2026-11-12)
+
+`index.html`·`admin.html` 에 `<meta name="robots" content="noindex, nofollow">` 를 넣었어요.
+구글 같은 검색 결과에 안 나오게 하는 표시예요. **주소를 아는 사람은 그대로 들어올 수 있어요** (막는 게 아니라 숨기기).
+robots.txt 는 GitHub 사이트 맨 위(hanjh-29.github.io)에만 효과가 있어서 안 썼어요.
