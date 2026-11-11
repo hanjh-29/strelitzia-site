@@ -6,5 +6,17 @@
   "fabricLoader": "0.20.1",
   "fabricApi": "0.165.0+26.3"
  },
- "files": []
+ "files": [
+  {
+   "version": "0.5.7",
+   "date": "2026-11-12",
+   "file": "downloads/strelitzia-0.5.7.jar",
+   "name": "strelitzia-0.5.7.jar",
+   "size": 3412683,
+   "sha256": "d210ca62055c394dd27f8fcf453687049a26e34f68f2739e2219f5899c133d78",
+   "notice": "v0.5.7",
+   "note": "",
+   "tested": true
+  }
+ ]
 }
