@@ -1161,6 +1161,56 @@
    "body": "",
    "images": [],
    "important": false
+  },
+  {
+   "id": "v0.5.11",
+   "kind": "update",
+   "version": "0.5.11",
+   "date": "2026-11-13",
+   "title": "바드 음표 입자 새 그림",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "바드 스킬에서 나오는 음표 입자를 도트 그림으로 바꿨어요",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "바드 음표 입자(♪·♫)를 16x16 도트 그림으로 바꿨어요. 다른 이펙트는 그대로예요"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.5.12",
+   "kind": "update",
+   "version": "0.5.12",
+   "date": "2026-11-13",
+   "title": "류트 설명창 새 단장",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "류트 설명창을 덩굴·룬 무늬와 오선지 바탕으로 다시 꾸몄어요",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "테두리에 덩굴과 금 룬 점 무늬, 모서리에 보라 보석과 반짝이 별 (테두리 위 금 음표는 없앴어요)"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "바탕에 은은한 오선지와 마력 반짝임"
+    },
+    {
+     "tag": "UPDATE",
+     "text": "이름은 ✦ 류트 ✦ (라일락 → 흰색), 스킬 키는 금 괄호 [Z], 구분선 ━━ ◆ ━━"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
   }
  ]
 }
