@@ -1,6 +1,6 @@
 {
  "schema": 1,
- "updated": "2026-11-12",
+ "updated": "2026-11-13",
  "notices": [
   {
    "id": "notice-site-open",
@@ -1206,6 +1206,27 @@
     {
      "tag": "UPDATE",
      "text": "이름은 ✦ 류트 ✦ (라일락 → 흰색), 스킬 키는 금 괄호 [Z], 구분선 ━━ ◆ ━━"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
+  },
+  {
+   "id": "v0.5.13",
+   "kind": "update",
+   "version": "0.5.13",
+   "date": "2026-11-13",
+   "title": "류트 설명창 기본으로",
+   "tags": [
+    "UPDATE"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "류트 설명창을 마크 기본 설명창으로 되돌렸어요",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "꾸민 류트 설명창(테두리·스킬 안내)을 끄고 마크 기본 설명창으로 돌아갔어요"
     }
    ],
    "body": "",
