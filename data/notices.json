@@ -1135,6 +1135,32 @@
    "body": "",
    "images": [],
    "important": false
+  },
+  {
+   "id": "v0.5.10",
+   "kind": "update",
+   "version": "0.5.10",
+   "date": "2026-11-12",
+   "title": "피의 창이 땅에 꽂혀요",
+   "tags": [
+    "UPDATE",
+    "FIX"
+   ],
+   "mainTag": "UPDATE",
+   "summary": "피의 창이 땅·벽에 맞으면 잠깐 꽂혀 있다가 사라져요",
+   "changes": [
+    {
+     "tag": "UPDATE",
+     "text": "피의 창이 땅·벽에 맞으면 창끝이 살짝 박힌 채로 1.5초 꽂혀 있다가 흩어지며 사라져요 (꽂히는 순간 부르르 떨리고 핏방울이 뚝뚝)"
+    },
+    {
+     "tag": "FIX",
+     "text": "피의 창 외곽선을 다시 뺐어요"
+    }
+   ],
+   "body": "",
+   "images": [],
+   "important": false
   }
  ]
 }
